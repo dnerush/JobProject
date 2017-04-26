@@ -1,0 +1,166 @@
+body{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.conteiner{
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.conteiner .btn{
+    text-decoration: none;
+    color:#fff;
+    border-radius: 5px;
+    border-bottom: 5px solid #34c89a;
+}
+
+.intro{
+    color: #fff;
+    padding-top: 60px;
+    padding-bottom: 160px;
+    background: #87509c;
+}
+
+.information{
+    text-align: center;
+    margin-top: 150px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#logo {
+    top: 20px;
+    position: absolute;
+    left: 40px;
+}
+
+#logo a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#logo h1 {
+    font-size: 3.5em;
+    font-family: Oswald, sans-serif;
+    text-shadow: 0px 2px 2px #0C1114;
+    margin: 0 0 0.25em 0;
+}
+
+#logo h2 {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    font-size: 1.0em;
+    color: #8EA2AD;
+}
+
+
+h1{
+    text-align: center;
+    margin-top: 150px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.btn{
+    display: inline-block;
+    background-color: #22eba9;
+    padding: 20px 85px;
+    margin-top: 65px;
+}
+
+.conteiner a:hover{
+    background-color: #25c8a3;
+    border-color: #289f93;
+    transition: .3s;
+}
+
+.menu{
+    float: right;
+    width: 50%;
+}
+.menu ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+    margin-left: 15px;
+
+}
+
+.menu a:hover {
+    background-color: #643a79;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+.menu li{
+    display: inline;
+}
+
+.menu a{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 7px;
+
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+#page {
+    position: relative;
+    margin: 0 0 0 0;
+    padding: 40px 40px 0 40px;
+    width: 900px;
+}
+
+#content {
+    float: left;
+    padding: 0;
+    width: 675px;
+}
+
+table {
+    margin: auto; /* Выравниваем по центру */
+    border-spacing: 0 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+th {
+    padding: 10px 20px;
+    background: #295654;
+    color: #55f9a1;
+    border-right: 2px solid;
+    font-size: 0.9em;
+}
+th:first-child {
+    text-align: left;
+}
+
+th:last-child {
+    border-right: none;
+}
+td {
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 2px solid #295654;
+    border-bottom: 2px solid #295654;
+    border-right: 2px solid #295654;
+    background: #c9f9f9;
+}
+td:first-child {
+    border-left: 2px solid #295654;
+    border-right: 2px solid #295654;
+}
+
