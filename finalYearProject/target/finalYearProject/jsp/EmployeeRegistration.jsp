@@ -13,11 +13,11 @@
             <label>Name</label>
             <input type='text' name='name' placeholder='Name' required><span></span>
             <br>
-            <label>Surname</label>
+            <label>Second name</label>
             <input type='text' name='secondName' placeholder='Second name' required><span></span>
             <br>
             <br>
-            <label>Surname</label>
+            <label>Age</label>
             <input type='text' name='age' placeholder='Age' required><span></span>
             <br>
             <label>City</label>

@@ -35,13 +35,13 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>Autorization</servlet-name>
+    <servlet-name>Authorization</servlet-name>
     <servlet-class>com.work.servlets.FindJobServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>Autorization</servlet-name>
-    <url-pattern>/autorization</url-pattern>
+    <servlet-name>Authorization</servlet-name>
+    <url-pattern>/authorization</url-pattern>
   </servlet-mapping>
 
   <servlet>
