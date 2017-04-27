@@ -3,7 +3,6 @@ package com.work.model;
 public class Employee {
 
     private long id;
-    private long idCV;
     private String name;
     private String secondName;
     private int age;
@@ -12,7 +11,7 @@ public class Employee {
     private String country;
     private String city;
 
-    public Employee(long id, String name, String surname, String secondName, int age, String sex, String photoPath, String country, String city, CV cv) {
+    public Employee(long id, String name, String surname, String secondName, int age, String sex, String photoPath, String country, String city) {
         this.id = id;
         this.name = name;
         this.secondName = secondName;
@@ -31,14 +30,6 @@ public class Employee {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getIdCV() {
-        return idCV;
-    }
-
-    public void setIdCV(long idCV) {
-        this.idCV = idCV;
     }
 
     public String getName() {
@@ -101,7 +92,6 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", idCV=" + idCV +
                 ", name='" + name + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", age=" + age +
@@ -120,7 +110,6 @@ public class Employee {
         Employee employee = (Employee) o;
 
         if (id != employee.id) return false;
-        if (idCV != employee.idCV) return false;
         if (age != employee.age) return false;
         if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
         if (secondName != null ? !secondName.equals(employee.secondName) : employee.secondName != null) return false;
@@ -133,7 +122,6 @@ public class Employee {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (idCV ^ (idCV >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
         result = 31 * result + age;
