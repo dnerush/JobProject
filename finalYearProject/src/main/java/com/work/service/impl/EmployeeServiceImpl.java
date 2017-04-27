@@ -39,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setSex(employeeDTO.getSex());
         employee.setPhotoPath(employeeDTO.getPhotoPath());
         employee.setCountry(employeeDTO.getCountry());
-        employee.setCity(employeeDTO.getCountry());
+        employee.setCity(employeeDTO.getCity());
         employee.setId(account.getId());
         emplyeeDAO.save(employee);
     }

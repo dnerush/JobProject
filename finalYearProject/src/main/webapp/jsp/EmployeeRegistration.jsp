@@ -20,11 +20,20 @@
             <label>Age</label>
             <input type='text' name='age' placeholder='Age' required><span></span>
             <br>
+            <label>Sex</label>
+            <input type='text' name='sex' placeholder='Sex' required><span></span>
+            <br>
+            <label>Country</label>
+            <input type='text' name='country' placeholder='Country' required><span></span>
+            <br>
             <label>City</label>
             <input type='text' name='city' placeholder='City' required><span></span>
             <br>
         </fieldset>
         <fieldset>
+            <label>Phone</label>
+            <input type='text' name='phone' placeholder='Phone' required><span></span>
+            <br>
             <label>Email</label>
             <input type='email' name='email' placeholder='Email' required><span></span>
             <br>

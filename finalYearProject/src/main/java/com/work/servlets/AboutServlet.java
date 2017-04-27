@@ -13,11 +13,13 @@ import java.io.IOException;
 public class AboutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         HttpSession se = req.getSession();
-        if (se.getAttribute("http_session")!= null)
+
+        if (se.getAttribute("user_session")!= null)
             req.getRequestDispatcher("jsp/About.jsp").forward(req, resp);
         else
             req.getRequestDispatcher("jsp/Authorization.jsp").forward(req, resp);
-        se.removeAttribute("http_session");
+        se.removeAttribute("user_session");
     }
 }

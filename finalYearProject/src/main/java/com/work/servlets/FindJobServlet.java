@@ -41,7 +41,7 @@ public class FindJobServlet extends HttpServlet {
         employeeDTO.setPassword2("123");
 
         HttpSession session = req.getSession();
-        session.setAttribute("http_session", employeeDTO);
+        session.setAttribute("user_session", employeeDTO);
 
         String keyword = req.getParameter("keyword");
         List<Vacancy> vacancyList = service.getVacancyListByKeyword(keyword);

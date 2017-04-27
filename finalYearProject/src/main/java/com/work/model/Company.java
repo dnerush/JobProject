@@ -12,17 +12,9 @@ public class Company  {
     private String country;
     private String city;
 
-    public List<Vacancy> getVacancies() {
-        return vacancies;
-    }
-
-    public void setVacancies(List<Vacancy> vacancies) {
-        this.vacancies = vacancies;
-    }
-
     private List<Vacancy> vacancies;
 
-    public Company(){}
+    public Company() { }
 
     public Company(long id, String name, String type, String description, String logo, String country, String city) {
         this.id = id;
@@ -32,6 +24,14 @@ public class Company  {
         this.logo = logo;
         this.country = country;
         this.city = city;
+    }
+
+    public List<Vacancy> getVacancies() {
+        return vacancies;
+    }
+
+    public void setVacancies(List<Vacancy> vacancies) {
+        this.vacancies = vacancies;
     }
 
     public String getName() {

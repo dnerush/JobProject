@@ -8,12 +8,10 @@ public class Vacancy {
     private String type;
     private String description;
     private String sourceLink;
-    private Boolean favourite;
+    private boolean favourite;
 
 
-    //Constructors
-    public Vacancy() {
-    }
+    public Vacancy() { }
 
     public Vacancy(long id, String name, String type, String description, String sourceLink, Boolean favourite) {
         this.id = id;
@@ -24,7 +22,6 @@ public class Vacancy {
         this.favourite = favourite;
     }
 
-    //Setters and Getters
 
     public long getId() {
         return id;
@@ -66,11 +63,11 @@ public class Vacancy {
         this.sourceLink = sourceLink;
     }
 
-    public Boolean getFavourite() {
+    public boolean getFavourite() {
         return favourite;
     }
 
-    public void setFavourite(Boolean favourite) {
+    public void setFavourite(boolean favourite) {
         this.favourite = favourite;
     }
 
@@ -95,11 +92,11 @@ public class Vacancy {
         Vacancy vacancy = (Vacancy) o;
 
         if (id != vacancy.id) return false;
+        if (favourite != vacancy.favourite) return false;
         if (name != null ? !name.equals(vacancy.name) : vacancy.name != null) return false;
         if (type != null ? !type.equals(vacancy.type) : vacancy.type != null) return false;
         if (description != null ? !description.equals(vacancy.description) : vacancy.description != null) return false;
-        if (sourceLink != null ? !sourceLink.equals(vacancy.sourceLink) : vacancy.sourceLink != null) return false;
-        return favourite != null ? favourite.equals(vacancy.favourite) : vacancy.favourite == null;
+        return sourceLink != null ? sourceLink.equals(vacancy.sourceLink) : vacancy.sourceLink == null;
     }
 
     @Override
@@ -109,7 +106,7 @@ public class Vacancy {
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (sourceLink != null ? sourceLink.hashCode() : 0);
-        result = 31 * result + (favourite != null ? favourite.hashCode() : 0);
+        result = 31 * result + (favourite ? 1 : 0);
         return result;
     }
 }

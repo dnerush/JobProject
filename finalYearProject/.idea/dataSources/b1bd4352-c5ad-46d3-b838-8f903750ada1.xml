@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="mydb@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="mydb">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <table id="6" parent="2" name="account"/>
+    <table id="7" parent="2" name="company"/>
+    <table id="8" parent="2" name="cv"/>
+    <table id="9" parent="2" name="employee"/>
+    <table id="10" parent="2" name="vacancy"/>
+    <column id="11" parent="6" name="idAccount">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="12" parent="6" name="login">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="13" parent="6" name="password">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="6" name="email">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="6" name="phone">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="16" parent="6" name="email_UNIQUE">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="17" parent="6" name="idAccount_UNIQUE">
+      <ColNames>idAccount</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="18" parent="6" name="login_UNIQUE">
+      <ColNames>login</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="19" parent="6" name="password_UNIQUE">
+      <ColNames>password</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="20" parent="6" name="phone_UNIQUE">
+      <ColNames>phone</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="21" parent="6" name="PRIMARY">
+      <ColNames>idAccount</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="22" parent="6" name="idAccount_UNIQUE">
+      <ColNames>idAccount</ColNames>
+      <UnderlyingIndexName>idAccount_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="23" parent="6" name="login_UNIQUE">
+      <ColNames>login</ColNames>
+      <UnderlyingIndexName>login_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="24" parent="6" name="password_UNIQUE">
+      <ColNames>password</ColNames>
+      <UnderlyingIndexName>password_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="25" parent="6" name="email_UNIQUE">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>email_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="26" parent="6" name="phone_UNIQUE">
+      <ColNames>phone</ColNames>
+      <UnderlyingIndexName>phone_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="27" parent="7" name="name">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="7" name="type">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="7" name="description">
+      <Position>3</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="7" name="logoPath">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="31" parent="7" name="country">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="7" name="city">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="7" name="Account_idAccount">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="34" parent="7" name="fk_Company_Account1_idx">
+      <ColNames>Account_idAccount</ColNames>
+    </index>
+    <key id="35" parent="7" name="PRIMARY">
+      <ColNames>Account_idAccount</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="36" parent="7" name="fk_Company_Account1">
+      <ColNames>Account_idAccount</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>account</RefTableName>
+      <RefColNames>idAccount</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="37" parent="8" name="education">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="8" name="Employee_idEmployee">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="8" name="Employee_Account_idAccount">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="40" parent="8" name="fk_CV_Employee1_idx">
+      <ColNames>Employee_Account_idAccount</ColNames>
+    </index>
+    <key id="41" parent="8" name="PRIMARY">
+      <ColNames>Employee_idEmployee</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="8" name="fk_CV_Employee1">
+      <ColNames>Employee_Account_idAccount</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>employee</RefTableName>
+      <RefColNames>Account_idAccount</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="43" parent="9" name="idCV">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="44" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="9" name="secondName">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="9" name="age">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="9" name="photoPath">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="48" parent="9" name="country">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="9" name="city">
+      <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="9" name="sex">
+      <Position>8</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="9" name="Account_idAccount">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="52" parent="9" name="fk_Employee_Account1_idx">
+      <ColNames>Account_idAccount</ColNames>
+    </index>
+    <index id="53" parent="9" name="name_UNIQUE">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="9" name="PRIMARY">
+      <ColNames>Account_idAccount</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="55" parent="9" name="name_UNIQUE">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="56" parent="9" name="fk_Employee_Account1">
+      <ColNames>Account_idAccount</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>account</RefTableName>
+      <RefColNames>idAccount</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="57" parent="10" name="idvacancy">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="58" parent="10" name="name">
+      <Position>2</Position>
+      <DataType>mediumtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="10" name="type">
+      <Position>3</Position>
+      <DataType>mediumtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="10" name="description">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="10" name="sourceLink">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="62" parent="10" name="isFavorite">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="63" parent="10" name="Company_idCompany">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="10" name="Company_Account_idAccount">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="65" parent="10" name="fk_Vacancy_Company1_idx">
+      <ColNames>Company_Account_idAccount</ColNames>
+    </index>
+    <index id="66" parent="10" name="idvacancy_UNIQUE">
+      <ColNames>idvacancy</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="67" parent="10" name="PRIMARY">
+      <ColNames>idvacancy</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="68" parent="10" name="idvacancy_UNIQUE">
+      <ColNames>idvacancy</ColNames>
+      <UnderlyingIndexName>idvacancy_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="69" parent="10" name="fk_Vacancy_Company1">
+      <ColNames>Company_Account_idAccount</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>company</RefTableName>
+      <RefColNames>Account_idAccount</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>

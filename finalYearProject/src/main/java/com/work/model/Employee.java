@@ -6,13 +6,13 @@ public class Employee {
     private long idCV;
     private String name;
     private String secondName;
-    private Integer age;
+    private int age;
     private String sex;
     private String photoPath;
     private String country;
     private String city;
 
-    public Employee(long id, String name, String surname, String secondName, Integer age, String sex, String photoPath, String country, String city, CV cv) {
+    public Employee(long id, String name, String surname, String secondName, int age, String sex, String photoPath, String country, String city, CV cv) {
         this.id = id;
         this.name = name;
         this.secondName = secondName;
@@ -23,10 +23,7 @@ public class Employee {
         this.city = city;
     }
 
-    //Constructors
-    public Employee(){
-
-    }
+    public Employee() { }
 
     public long getId() {
         return id;
@@ -60,11 +57,11 @@ public class Employee {
         this.secondName = secondName;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -124,9 +121,9 @@ public class Employee {
 
         if (id != employee.id) return false;
         if (idCV != employee.idCV) return false;
+        if (age != employee.age) return false;
         if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
         if (secondName != null ? !secondName.equals(employee.secondName) : employee.secondName != null) return false;
-        if (age != null ? !age.equals(employee.age) : employee.age != null) return false;
         if (sex != null ? !sex.equals(employee.sex) : employee.sex != null) return false;
         if (photoPath != null ? !photoPath.equals(employee.photoPath) : employee.photoPath != null) return false;
         if (country != null ? !country.equals(employee.country) : employee.country != null) return false;
@@ -139,7 +136,7 @@ public class Employee {
         result = 31 * result + (int) (idCV ^ (idCV >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
-        result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + age;
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
         result = 31 * result + (photoPath != null ? photoPath.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);

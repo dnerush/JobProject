@@ -22,25 +22,37 @@ public class EmployeeRegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String surname = req.getParameter("secondName");
-        int age  = Integer.parseInt(req.getParameter("age"));
-        String city = req.getParameter("city");
-        String email = req.getParameter("email");
-        String login = req.getParameter("login");
-        String password1 = req.getParameter("pass1");
-        String password2 = req.getParameter("pass2");
+        try {
+            String name = req.getParameter("name");
+            String surname = req.getParameter("secondName");
+            int age  = Integer.parseInt(req.getParameter("age"));
+            String sex = req.getParameter("sex");
+            String country = req.getParameter("country");
+            String city = req.getParameter("city");
+            String phone = req.getParameter("phone");
+            String email = req.getParameter("email");
+            String login = req.getParameter("login");
+            String password1 = req.getParameter("pass1");
+            String password2 = req.getParameter("pass2");
+            String photoPath = null;
 
 
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setName(name);
-        employeeDTO.setSecondName(surname);
-        employeeDTO.setCity(city);
-        employeeDTO.setEmail(email);
-        employeeDTO.setLogin(login);
-        employeeDTO.setPassword1(password1);
-        employeeDTO.setPassword2(password2);
-
-        //service.registrationEmployee(employeeDTO);
+            EmployeeDTO employeeDTO = new EmployeeDTO();
+            employeeDTO.setName(name);
+            employeeDTO.setSecondName(surname);
+            employeeDTO.setAge(age);
+            employeeDTO.setSex(sex);
+            employeeDTO.setCountry(country);
+            employeeDTO.setCity(city);
+            employeeDTO.setPhone(phone);
+            employeeDTO.setEmail(email);
+            employeeDTO.setLogin(login);
+            employeeDTO.setPassword1(password1);
+            employeeDTO.setPassword2(password2);
+            employeeDTO.setPhotoPath(photoPath);
+            service.registrationEmployee(employeeDTO);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace(); // если пароли не совпадают
+        }
     }
 }

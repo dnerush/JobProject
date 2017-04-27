@@ -7,7 +7,7 @@ public class EmployeeDTO {
     private AccountDTO accountDTO = new AccountDTO();
     private String name;
     private String secondName;
-    private Integer age;
+    private int age;
     private String sex;
     private String photoPath;
     private String country;
@@ -18,8 +18,8 @@ public class EmployeeDTO {
         super();
     }
 
-    public EmployeeDTO(long id, String login, String password, String email, String phone,
-                    String name, String surname, String secondName, Integer age, String sex,
+    public EmployeeDTO(String login, String password, String email, String phone,
+                    String name, String secondName, int age, String sex,
                     String photoPath, String country, String city, CV cv) {
         accountDTO.setLogin(login);
         accountDTO.setPassword1(password);
@@ -99,11 +99,11 @@ public class EmployeeDTO {
         this.secondName = secondName;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -169,10 +169,10 @@ public class EmployeeDTO {
 
         EmployeeDTO that = (EmployeeDTO) o;
 
+        if (age != that.age) return false;
         if (accountDTO != null ? !accountDTO.equals(that.accountDTO) : that.accountDTO != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (secondName != null ? !secondName.equals(that.secondName) : that.secondName != null) return false;
-        if (age != null ? !age.equals(that.age) : that.age != null) return false;
         if (sex != null ? !sex.equals(that.sex) : that.sex != null) return false;
         if (photoPath != null ? !photoPath.equals(that.photoPath) : that.photoPath != null) return false;
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
@@ -185,7 +185,7 @@ public class EmployeeDTO {
         int result = accountDTO != null ? accountDTO.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
-        result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + age;
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
         result = 31 * result + (photoPath != null ? photoPath.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
