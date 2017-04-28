@@ -1,6 +1,8 @@
 package com.work.service.impl;
 
-import com.work.dao.api.DAO;
+import com.work.dao.api.AccountDAO;
+import com.work.dao.api.EmployeeDAO;
+import com.work.dao.impl.AccountDAOImpl;
 import com.work.dao.impl.EmployeeDAOImpl;
 import com.work.dto.AccountDTO;
 import com.work.dto.EmployeeDTO;
@@ -14,7 +16,9 @@ import com.work.service.api.EmployeeService;
  */
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private DAO emplyeeDAO = new EmployeeDAOImpl();
+    private EmployeeDAO emplyeeDAO = new EmployeeDAOImpl();
+
+    private AccountDAO accountDAO = new AccountDAOImpl();
 
     private AccountService accountService = new AccountServiceImpl();
 
@@ -40,7 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setPhotoPath(employeeDTO.getPhotoPath());
         employee.setCountry(employeeDTO.getCountry());
         employee.setCity(employeeDTO.getCity());
-        employee.setId(account.getId());
+        // тянем с базы автоинкрементирующийся id аккаунта
+        long accountId = accountDAO.getAccountID(account);
+        // инициализируем им employee id
+        employee.setId(accountId);
         emplyeeDAO.save(employee);
     }
 }

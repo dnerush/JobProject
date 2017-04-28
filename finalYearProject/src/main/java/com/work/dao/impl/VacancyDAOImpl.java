@@ -75,7 +75,7 @@ public class VacancyDAOImpl implements VacancyDAO {
     public Vacancy delete(Vacancy vacancy) { return null; }
 
     private List<Vacancy> extractResultSet(ResultSet rs) throws SQLException {
-        List<Vacancy> vacancyList = new ArrayList<Vacancy>();
+        List<Vacancy> vacancyList = new ArrayList<>();
         Vacancy vacancy;
         while(rs.next()) {
             vacancy = new Vacancy();

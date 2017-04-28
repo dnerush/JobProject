@@ -51,7 +51,8 @@ public class EmployeeRegistrationServlet extends HttpServlet {
             employeeDTO.setPassword2(password2);
             employeeDTO.setPhotoPath(photoPath);
             service.registrationEmployee(employeeDTO);
-        } catch (IllegalArgumentException e) {
+            req.getRequestDispatcher("jsp/Authorization.jsp").forward(req, resp);
+        } catch (Exception e) {
             e.printStackTrace(); // если пароли не совпадают
         }
     }

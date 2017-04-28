@@ -1,10 +1,10 @@
 com\work\Transformer.class
 com\work\dao\api\AccountDAO.class
+com\work\servlets\AuthorizationServlet.class
 com\work\dao\impl\AccountDAOImpl.class
 com\work\dao\impl\CompanyDAO.class
 com\work\service\impl\CompanyServiceImpl.class
 com\work\dao\api\DAO.class
-com\work\servlets\AutorizationServlet.class
 com\work\dto\AccountDTO.class
 com\work\service\impl\AccountServiceImpl.class
 com\work\service\api\AccountService.class

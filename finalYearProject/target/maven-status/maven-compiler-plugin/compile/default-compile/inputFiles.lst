@@ -24,7 +24,6 @@ D:\JobProject\finalYearProject\src\main\java\com\work\model\Company.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\CVService.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Account.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\VacancyService.java
-D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AutorizationServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\AccountDAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\EmployeeService.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\EmployeeServiceImpl.java
@@ -32,6 +31,7 @@ D:\JobProject\finalYearProject\src\main\java\com\work\web\App.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\CompanyDAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\Transformer.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Vacancy.java
+D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AuthorizationServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\FindJobServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dto\VacancyDTO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dto\CVDTO.java
