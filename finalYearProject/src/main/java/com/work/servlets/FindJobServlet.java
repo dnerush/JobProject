@@ -11,16 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Sky_el on 14.03.2017.
  */
 public class FindJobServlet extends HttpServlet {
 
-    private final AtomicInteger ids = new AtomicInteger();
-
-    private VacancyServiceImpl service = new VacancyServiceImpl();
+    private final VacancyServiceImpl service = new VacancyServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

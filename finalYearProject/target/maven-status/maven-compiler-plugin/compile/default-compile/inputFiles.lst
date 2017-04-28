@@ -8,6 +8,7 @@ D:\JobProject\finalYearProject\src\main\java\com\work\service\api\AccountService
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\AccountDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\EmployeeDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\CompanyServiceImpl.java
+D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\CompanyDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\MainPageServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\VacancyServiceImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\DAO.java
@@ -16,10 +17,10 @@ D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AboutServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\VacancyDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Employee.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\EmployeeRegistrationServlet.java
+D:\JobProject\finalYearProject\src\main\java\com\work\servlets\CompanyRegistrationServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\Settings.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\EmployeeDAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\CV.java
-D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\CompanyDAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Company.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\CVService.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Account.java

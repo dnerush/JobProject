@@ -45,13 +45,23 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>EmployeeRegistration</servlet-name>
-    <servlet-class>com.work.servlets.EmployeeRegistrationServlet</servlet-class>
-  </servlet>
+  <servlet-name>EmployeeRegistration</servlet-name>
+  <servlet-class>com.work.servlets.EmployeeRegistrationServlet</servlet-class>
+</servlet>
 
   <servlet-mapping>
     <servlet-name>EmployeeRegistration</servlet-name>
     <url-pattern>/employee_registration</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CompanyRegistration</servlet-name>
+    <servlet-class>com.work.servlets.CompanyRegistrationServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CompanyRegistration</servlet-name>
+    <url-pattern>/company_registration</url-pattern>
   </servlet-mapping>
 </web-app>
 

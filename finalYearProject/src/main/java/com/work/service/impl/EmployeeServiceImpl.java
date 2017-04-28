@@ -16,11 +16,11 @@ import com.work.service.api.EmployeeService;
  */
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeDAO emplyeeDAO = new EmployeeDAOImpl();
+    private final EmployeeDAO emplyeeDAO = new EmployeeDAOImpl();
 
-    private AccountDAO accountDAO = new AccountDAOImpl();
+    private final AccountDAO accountDAO = new AccountDAOImpl();
 
-    private AccountService accountService = new AccountServiceImpl();
+    private final AccountService accountService = new AccountServiceImpl();
 
     public void registrationEmployee(EmployeeDTO employeeDTO) {
         // validation

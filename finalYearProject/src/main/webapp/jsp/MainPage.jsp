@@ -30,7 +30,8 @@
                 <li><a href="">EMPLOYEE</a></li>
                 <li><a href="">CONTACT</a></li>
             </ul>
-            <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Registration</a></li>
+            <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Employee_Registration</a></li>
+            <li><a href="${pageContext.servletContext.contextPath}/company_registration">Company_Registration</a></li>
             <li><a href="">Autorization</a></li>
         </div>
         <h1>Hi there! Here you can find the right vacancy for you or advertise.</h1>

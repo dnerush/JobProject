@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Sky_el on 22.03.2017.
  */
 public class VacancyServiceImpl implements VacancyService {
-    private VacancyDAO dao = new VacancyDAOImpl();
+    private final VacancyDAO dao = new VacancyDAOImpl();
 
     public List<Vacancy> getVacancyListByKeyword(String keyword) {
         return dao.getListByKeyword(keyword);

@@ -14,8 +14,8 @@ import java.io.IOException;
  */
 public class AuthorizationServlet extends HttpServlet {
 
-    private EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
-    private CompanyServiceImpl companyService = new CompanyServiceImpl();
+    private final EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+    private final CompanyServiceImpl companyService = new CompanyServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

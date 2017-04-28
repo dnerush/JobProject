@@ -1,6 +1,6 @@
 package com.work.service.impl;
 
-import com.work.dao.api.DAO;
+import com.work.dao.api.AccountDAO;
 import com.work.dao.impl.AccountDAOImpl;
 import com.work.dto.AccountDTO;
 import com.work.model.Account;
@@ -11,7 +11,7 @@ import com.work.service.api.AccountService;
  */
 public class AccountServiceImpl implements AccountService {
 
-    private DAO dao = new AccountDAOImpl();
+    private final AccountDAO dao = new AccountDAOImpl();
 
     public Account registerAccount(AccountDTO accountDTO) {
         //validation

@@ -10,6 +10,8 @@
 <body>
 <form action="${pageContext.servletContext.contextPath}/employee_registration" method="POST">
         <fieldset>
+            Employee registration
+            <br>
             <label>Name</label>
             <input type='text' name='name' placeholder='Name' required><span></span>
             <br>
@@ -54,7 +56,6 @@
         </fieldset>
         <div class="sum">
             <input type="submit" value="Sign Up">
-            <br><a href="#">Autorization</a>
         </div>
     </form>
 </body>

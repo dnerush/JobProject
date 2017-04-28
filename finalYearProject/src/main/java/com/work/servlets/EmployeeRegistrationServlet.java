@@ -13,7 +13,7 @@ import java.io.IOException;
  * Created by Sky_el on 16.03.2017.
  */
 public class EmployeeRegistrationServlet extends HttpServlet {
-    private EmployeeServiceImpl service = new EmployeeServiceImpl();
+    private final EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -50,7 +50,7 @@ public class EmployeeRegistrationServlet extends HttpServlet {
             employeeDTO.setPassword1(password1);
             employeeDTO.setPassword2(password2);
             employeeDTO.setPhotoPath(photoPath);
-            service.registrationEmployee(employeeDTO);
+            employeeService.registrationEmployee(employeeDTO);
             req.getRequestDispatcher("jsp/Authorization.jsp").forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace(); // если пароли не совпадают

@@ -1,6 +1,8 @@
 package com.work.service.impl;
 
-import com.work.dao.impl.CompanyDAO;
+import com.work.dao.api.AccountDAO;
+import com.work.dao.impl.AccountDAOImpl;
+import com.work.dao.impl.CompanyDAOImpl;
 import com.work.dto.AccountDTO;
 import com.work.dto.CompanyDTO;
 import com.work.model.Account;
@@ -13,9 +15,11 @@ import com.work.service.api.CompanyService;
  */
 public class CompanyServiceImpl implements CompanyService {
 
-    private CompanyDAO companyDAO = new CompanyDAO();
+    private final CompanyDAOImpl companyDAOImpl = new CompanyDAOImpl();
 
-    private AccountService accountService = new AccountServiceImpl();
+    private final AccountDAO accountDAO = new AccountDAOImpl();
+
+    private final AccountService accountService = new AccountServiceImpl();
 
     public void registrationCompany(CompanyDTO companyDTO) {
         // validation
@@ -37,6 +41,10 @@ public class CompanyServiceImpl implements CompanyService {
         company.setCountry(companyDTO.getCountry());
         company.setCity(companyDTO.getCity());
         company.setId(account.getId());
-        companyDAO.save(company);
+        // тянем с базы автоинкрементирующийся id аккаунта
+        long accountId = accountDAO.getAccountID(account);
+        // инициализируем им employee id
+        company.setId(accountId);
+        companyDAOImpl.save(company);
     }
 }
