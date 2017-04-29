@@ -10,12 +10,14 @@ import com.work.model.Company;
 import com.work.service.api.AccountService;
 import com.work.service.api.CompanyService;
 
+import java.util.List;
+
 /**
  * Created by Sky_el on 23.03.2017.
  */
 public class CompanyServiceImpl implements CompanyService {
 
-    private final CompanyDAOImpl companyDAOImpl = new CompanyDAOImpl();
+    private final CompanyDAOImpl companyDAO = new CompanyDAOImpl();
 
     private final AccountDAO accountDAO = new AccountDAOImpl();
 
@@ -45,6 +47,10 @@ public class CompanyServiceImpl implements CompanyService {
         long accountId = accountDAO.getAccountID(account);
         // инициализируем им employee id
         company.setId(accountId);
-        companyDAOImpl.save(company);
+        companyDAO.save(company);
+    }
+
+    public List<Company> companyList() {
+        return companyDAO.get();
     }
 }

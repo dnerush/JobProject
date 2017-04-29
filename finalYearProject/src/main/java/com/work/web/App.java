@@ -1,14 +1,14 @@
 package com.work.web;
 
-import com.work.model.Account;
-import com.work.service.impl.AccountServiceImpl;
+import com.work.model.Company;
+import com.work.service.impl.CompanyServiceImpl;
 
 import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        AccountServiceImpl accountService = new AccountServiceImpl();
-        List<Account> list =  accountService.accountList();
+        CompanyServiceImpl companyService = new CompanyServiceImpl();
+        List<Company> list =  companyService.companyList();
 
         System.out.println(list);
 
