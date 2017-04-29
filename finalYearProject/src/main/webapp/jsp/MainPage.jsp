@@ -32,7 +32,7 @@
             </ul>
             <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Employee_Registration</a></li>
             <li><a href="${pageContext.servletContext.contextPath}/company_registration">Company_Registration</a></li>
-            <li><a href="">Autorization</a></li>
+            <li><a href="${pageContext.servletContext.contextPath}/authorization">Autorization</a></li>
         </div>
         <h1>Hi there! Here you can find the right vacancy for you or advertise.</h1>
         <p><img src="images/1.jpeg" alt="Письма мастера дзен"></p>

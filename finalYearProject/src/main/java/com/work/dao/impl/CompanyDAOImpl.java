@@ -1,6 +1,6 @@
 package com.work.dao.impl;
 
-import com.work.dao.api.DAO;
+import com.work.dao.api.CompanyDAO;
 import com.work.model.Company;
 import com.work.service.Settings;
 
@@ -11,13 +11,14 @@ import java.util.List;
 /**
  * Created by Sky_el on 23.03.2017.
  */
-public class CompanyDAOImpl implements DAO<Company> {
+public class CompanyDAOImpl implements CompanyDAO {
 
     private final Connection connection;
 
     public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.company";
     public static final String SQL_INSERT = "INSERT INTO mydb.company(Account_idAccount, name, type, description, logoPath, " +
             " country, city) VALUES (?, ?, ?, ?, ?, ?, ?) ";
+    public static final String SQL_SELECT_BY_ID = "SELECT * FROM mydb.company WHERE Account_idAccount = ?";
 
     public CompanyDAOImpl() {
         final Settings settings = Settings.getInstance();
@@ -65,6 +66,28 @@ public class CompanyDAOImpl implements DAO<Company> {
     @Override
     public Company delete(Company company) {
         return null;
+    }
+
+    public Company getCompanyByID(long id) {
+        Company foundCompany = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_BY_ID);) {
+            preparedStatement.setInt(1, (int)id);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs != null) {
+                rs.next();
+                foundCompany = new Company();
+                foundCompany.setId(rs.getInt("Account_idAccount"));
+                foundCompany.setName(rs.getString("name"));
+                foundCompany.setType(rs.getString("type"));
+                foundCompany.setDescription(rs.getString("description"));
+                foundCompany.setLogo(rs.getString("logoPath"));
+                foundCompany.setCountry(rs.getString("country"));
+                foundCompany.setCity(rs.getString("city"));
+            }
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
+        return foundCompany;
     }
 
     private List<Company> extractResultSet(ResultSet rs) throws SQLException {

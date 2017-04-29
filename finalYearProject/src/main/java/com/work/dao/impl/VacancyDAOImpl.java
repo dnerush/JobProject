@@ -16,7 +16,7 @@ public class VacancyDAOImpl implements VacancyDAO {
     private final Connection connection;
 
     public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.vacancy";
-    public static final String SQL_SELECT_BY_KEYWORD = "SELECT * FROM mydb.vacancy WHERE name LIKE ";
+    public static final String SQL_SELECT_BY_KEYWORD = "SELECT * FROM schema.vacancy WHERE name LIKE ?";
     public static final String SQL_INSERT = "INSERT INTO mydb.vacancy(name, type, description, sourceLink) " +
             "VALUES (?, ?, ?, ?) ";
     public static final String SQL_DELETE = "DELETE FROM mydb.vacancy WHERE id = ";
@@ -46,8 +46,9 @@ public class VacancyDAOImpl implements VacancyDAO {
     // получаем список вакансии по ключевому слову
     public List<Vacancy> getListByKeyword(String keyword) {
         List<Vacancy> vacancyList;
-        try (Statement statement = connection.createStatement();
-             ResultSet rs = statement.executeQuery(SQL_SELECT_BY_KEYWORD + "'%" + keyword + "%'")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_BY_KEYWORD);) {
+            preparedStatement.setString(1, "%" + keyword + "%");
+            ResultSet rs = preparedStatement.executeQuery();
             vacancyList = extractResultSet(rs);
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);

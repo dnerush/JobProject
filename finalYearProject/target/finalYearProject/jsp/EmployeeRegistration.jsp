@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="css/style1.css">
+<link rel="stylesheet" href="css/style.css">
 
 
 <html>
@@ -8,7 +9,20 @@
     <title>Registration</title>
 </head>
 <body>
-<form action="${pageContext.servletContext.contextPath}/employee_registration" method="POST">
+    <div class="menu">
+        <ul>
+            <li><a href="${pageContext.servletContext.contextPath}/mainPage">MAIN</a></li>
+            <li><a href="${pageContext.servletContext.contextPath}/about">ABOUT</a></li>
+            <li><a href="${pageContext.servletContext.contextPath}/jobs">JOBS</a></li>
+            <li><a href="">EMPLOYEE</a></li>
+            <li><a href="">CONTACT</a></li>
+        </ul>
+        <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Employee_Registration</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/company_registration">Company_Registration</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/authorization">Autorization</a></li>
+    </div>
+
+    <form action="${pageContext.servletContext.contextPath}/employee_registration" method="POST">
         <fieldset>
             Employee registration
             <br>

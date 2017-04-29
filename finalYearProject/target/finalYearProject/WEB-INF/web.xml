@@ -36,7 +36,7 @@
 
   <servlet>
     <servlet-name>Authorization</servlet-name>
-    <servlet-class>com.work.servlets.Authorization</servlet-class>
+    <servlet-class>com.work.servlets.AuthorizationServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

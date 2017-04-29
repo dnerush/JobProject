@@ -53,4 +53,8 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> companyList() {
         return companyDAO.get();
     }
+
+    public Company getCompanyByID(long id) {
+        return companyDAO.getCompanyByID(id);
+    }
 }

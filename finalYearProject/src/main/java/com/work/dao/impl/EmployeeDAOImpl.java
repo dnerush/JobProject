@@ -16,7 +16,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     private final Connection connection;
 
     public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.employee";
-
+    public static final String SQL_SELECT_BY_ID = "SELECT * FROM mydb.employee WHERE Account_idAccount = ?";
     public static final String SQL_INSERT = "INSERT INTO mydb.employee(Account_idAccount, secondName, age, photoPath, country, " +
             " city, sex, name) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
 
@@ -65,6 +65,28 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return null;
     }
 
+    public Employee getEmployeeByID(long id) {
+        Employee foundEmployee = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_BY_ID);) {
+            preparedStatement.setInt(1, (int)id);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs != null) {
+                rs.next();
+                foundEmployee = new Employee();
+                foundEmployee.setId(rs.getInt("Account_idAccount"));
+                foundEmployee.setName(rs.getString("name"));
+                foundEmployee.setSecondName(rs.getString("secondName"));
+                foundEmployee.setAge(rs.getInt("age"));
+                foundEmployee.setPhotoPath(rs.getString("photoPath"));
+                foundEmployee.setCountry(rs.getString("country"));
+                foundEmployee.setCity(rs.getString("city"));
+                foundEmployee.setSex(rs.getString("sex"));
+            }
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
+        return foundEmployee;
+    }
 
     private List<Employee> extractResultSet(ResultSet rs) throws SQLException {
         List<Employee> vacancyList = new ArrayList<>();
