@@ -70,7 +70,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_BY_ID);) {
             preparedStatement.setInt(1, (int)id);
             ResultSet rs = preparedStatement.executeQuery();
-            if(rs != null) {
+            if(rs.getFetchSize() != 0) {
                 rs.next();
                 foundEmployee = new Employee();
                 foundEmployee.setId(rs.getInt("Account_idAccount"));

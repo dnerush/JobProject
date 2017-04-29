@@ -73,7 +73,7 @@ public class CompanyDAOImpl implements CompanyDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_BY_ID);) {
             preparedStatement.setInt(1, (int)id);
             ResultSet rs = preparedStatement.executeQuery();
-            if(rs != null) {
+            if(rs.getFetchSize() != 0) {
                 rs.next();
                 foundCompany = new Company();
                 foundCompany.setId(rs.getInt("Account_idAccount"));
