@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface VacancyDAO extends DAO<Vacancy> {
     List<Vacancy> getListByKeyword(String keyword);
+    void close();
 }

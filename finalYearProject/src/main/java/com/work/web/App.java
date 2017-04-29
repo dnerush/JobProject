@@ -1,12 +1,16 @@
 package com.work.web;
 
-import com.work.model.CV;
+import com.work.model.Account;
+import com.work.service.impl.AccountServiceImpl;
+
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        CV cv = new CV();
-        //Employee employee = new Employee(1,"asiv","123a", Role.ADMIN, "Andrey", "Sivoraksha", "Evgenievich", 22, "path", "Urkaine", "Kharkov", cv);
-        //System.out.println(employee);
+        AccountServiceImpl accountService = new AccountServiceImpl();
+        List<Account> list =  accountService.accountList();
+
+        System.out.println(list);
+
     }
 }

@@ -11,22 +11,22 @@ import java.util.List;
  * Created by Sky_el on 22.03.2017.
  */
 public class VacancyServiceImpl implements VacancyService {
-    private final VacancyDAO dao = new VacancyDAOImpl();
+    private final VacancyDAO vacancyDAO = new VacancyDAOImpl();
 
     public List<Vacancy> getVacancyListByKeyword(String keyword) {
-        return dao.getListByKeyword(keyword);
+        return vacancyDAO.getListByKeyword(keyword);
     }
 
     public List<Vacancy> getListOfVacancy() {
-        return dao.get();
+        return vacancyDAO.get();
     }
 
     public void saveVacancy(Vacancy vacancy) {
-        dao.save(vacancy);
+        vacancyDAO.save(vacancy);
     }
 
     public void delete(Vacancy vacancy) {
-        dao.delete(vacancy);
+        vacancyDAO.delete(vacancy);
     }
 
 }

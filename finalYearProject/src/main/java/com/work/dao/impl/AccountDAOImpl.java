@@ -5,6 +5,7 @@ import com.work.model.Account;
 import com.work.service.Settings;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class AccountDAOImpl implements AccountDAO {
 
     private final Connection connection;
 
+    public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.account";
     public static final String SQL_INSERT = "INSERT INTO mydb.account(login, password, email, phone) VALUES (?, ?, ?, ?)";
     public static final String SQL_SELECT_ID = "SELECT * FROM mydb.account WHERE login = ? AND  password = ?";
 
@@ -29,7 +31,14 @@ public class AccountDAOImpl implements AccountDAO {
 
     @Override
     public List<Account> get() {
-        return null;
+        List<Account> accountList;
+        try (Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(SQL_SELECT_ALL)) {
+            accountList = extractResultSet(rs);
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
+        return accountList;
     }
 
     @Override
@@ -62,16 +71,31 @@ public class AccountDAOImpl implements AccountDAO {
             preparedStatement.setString(1, account.getLogin());
             preparedStatement.setString(2, account.getPassword());
             ResultSet rs = preparedStatement.executeQuery();
-            accountID = extractResultSet(rs);
+            accountID = goOverResultSet(rs);
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
         }
         return accountID;
     }
 
-    private long extractResultSet(ResultSet rs) throws SQLException {
+    private long goOverResultSet(ResultSet rs) throws SQLException {
         rs.next();
         return rs.getLong("idAccount");
+    }
+
+    private List<Account> extractResultSet(ResultSet rs) throws SQLException {
+        List<Account> accountList = new ArrayList<>();
+        Account account;
+        while(rs.next()) {
+            account = new Account();
+            account.setId(rs.getLong("idAccount"));
+            account.setLogin(rs.getString("login"));
+            account.setPassword(rs.getString("password"));
+            account.setEmail(rs.getString("email"));
+            account.setPhone(rs.getString("phone"));
+            accountList.add(account);
+        }
+        return accountList;
     }
 
 

@@ -36,7 +36,6 @@ public class VacancyDAOImpl implements VacancyDAO {
         List<Vacancy> vacancyList;
         try (Statement statement = connection.createStatement();
               ResultSet rs = statement.executeQuery(SQL_SELECT_ALL)) {
-            Vacancy vacancy;
             vacancyList = extractResultSet(rs);
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);

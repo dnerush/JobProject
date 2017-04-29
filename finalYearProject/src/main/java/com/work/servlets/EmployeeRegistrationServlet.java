@@ -53,7 +53,7 @@ public class EmployeeRegistrationServlet extends HttpServlet {
             employeeService.registrationEmployee(employeeDTO);
             req.getRequestDispatcher("jsp/Authorization.jsp").forward(req, resp);
         } catch (Exception e) {
-            e.printStackTrace(); // если пароли не совпадают
+            e.printStackTrace();
         }
     }
 }

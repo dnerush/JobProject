@@ -4,10 +4,8 @@ import com.work.dao.api.EmployeeDAO;
 import com.work.model.Employee;
 import com.work.service.Settings;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +14,8 @@ import java.util.List;
 public class EmployeeDAOImpl implements EmployeeDAO {
 
     private final Connection connection;
+
+    public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.employee";
 
     public static final String SQL_INSERT = "INSERT INTO mydb.employee(Account_idAccount, secondName, age, photoPath, country, " +
             " city, sex, name) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
@@ -31,7 +31,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     public List<Employee> get() {
-        return null;
+        List<Employee> employeeList;
+        try (Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(SQL_SELECT_ALL)) {
+            employeeList = extractResultSet(rs);
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
+        return employeeList;
     }
 
     public void save(Employee employee) {
@@ -56,5 +63,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     public Employee delete(Employee employee) {
         return null;
+    }
+
+
+    private List<Employee> extractResultSet(ResultSet rs) throws SQLException {
+        List<Employee> vacancyList = new ArrayList<>();
+        Employee employee;
+        while(rs.next()) {
+            employee = new Employee();
+            employee.setId(rs.getLong("Account_idAccount"));
+            employee.setName(rs.getString("name"));
+            employee.setSecondName(rs.getString("secondName"));
+            employee.setAge(rs.getInt("age"));
+            employee.setSex(rs.getString("sex"));
+            employee.setPhotoPath(rs.getString("photoPath"));
+            employee.setCountry(rs.getString("country"));
+            employee.setCity(rs.getString("city"));
+            vacancyList.add(employee);
+        }
+        return vacancyList;
     }
 }

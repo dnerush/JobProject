@@ -11,6 +11,8 @@ import com.work.model.Employee;
 import com.work.service.api.AccountService;
 import com.work.service.api.EmployeeService;
 
+import java.util.List;
+
 /**
  * Created by Sky_el on 22.03.2017.
  */
@@ -49,5 +51,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         // инициализируем им employee id
         employee.setId(accountId);
         emplyeeDAO.save(employee);
+    }
+
+    public List<Employee> employeeList() {
+        return emplyeeDAO.get();
     }
 }

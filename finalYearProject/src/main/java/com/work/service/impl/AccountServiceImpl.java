@@ -6,12 +6,14 @@ import com.work.dto.AccountDTO;
 import com.work.model.Account;
 import com.work.service.api.AccountService;
 
+import java.util.List;
+
 /**
  * Created by Sky_el on 16.03.2017.
  */
 public class AccountServiceImpl implements AccountService {
 
-    private final AccountDAO dao = new AccountDAOImpl();
+    private final AccountDAO accountDAO = new AccountDAOImpl();
 
     public Account registerAccount(AccountDTO accountDTO) {
         //validation
@@ -24,7 +26,11 @@ public class AccountServiceImpl implements AccountService {
         account.setEmail(accountDTO.getEmail());
         account.setPhone(accountDTO.getPhone());
         // transfer to DAO
-        dao.save(account);
+        accountDAO.save(account);
         return account;
+    }
+
+    public List<Account> accountList() {
+        return accountDAO.get();
     }
 }
