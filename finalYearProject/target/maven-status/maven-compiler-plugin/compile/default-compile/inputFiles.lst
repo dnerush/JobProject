@@ -20,6 +20,7 @@ D:\JobProject\finalYearProject\src\main\java\com\work\servlets\EmployeeRegistrat
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\CompanyRegistrationServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\Settings.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\EmployeeDAO.java
+D:\JobProject\finalYearProject\src\main\java\com\work\servlets\PersonalAreaServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\CV.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Company.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\CVService.java
@@ -31,6 +32,7 @@ D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\EmployeeServi
 D:\JobProject\finalYearProject\src\main\java\com\work\web\App.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\CompanyDAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\Transformer.java
+D:\JobProject\finalYearProject\src\main\java\com\work\servlets\SignOutServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Vacancy.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AuthorizationServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\FindJobServlet.java

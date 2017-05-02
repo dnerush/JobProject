@@ -23,21 +23,28 @@
         </div>
 
         <div class="menu">
-            <ul>
+            <li>
                 <li><a href="${pageContext.servletContext.contextPath}/mainPage">MAIN</a></li>
                 <li><a href="${pageContext.servletContext.contextPath}/about">ABOUT</a></li>
                 <li><a href="${pageContext.servletContext.contextPath}/jobs">JOBS</a></li>
-                <li><a href="">EMPLOYEE</a></li>
                 <li><a href="">CONTACT</a></li>
+                <li>
+                    <c:if test="${account_session == null}">
+                        <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Registration</a></li>
+                        <li><a href="${pageContext.servletContext.contextPath}/authorization">Authorization</a></li>
+                    </c:if>
+                </li>
+                <li>
+                    <c:if test="${account_session != null}">
+                        <li><a href="${pageContext.servletContext.contextPath}/personal_area"> ${accountLogin} </a></li>
+                        <li><a href="${pageContext.servletContext.contextPath}/sign_out">Sign out</a></li>
+                    </c:if>
+                </li>
             </ul>
-            <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Employee_Registration</a></li>
-            <li><a href="${pageContext.servletContext.contextPath}/company_registration">Company_Registration</a></li>
-            <li><a href="${pageContext.servletContext.contextPath}/authorization">Autorization</a></li>
         </div>
         <h1>Hi there! Here you can find the right vacancy for you or advertise.</h1>
-        <p><img src="images/1.jpeg" alt="Письма мастера дзен"></p>
-        <a class="btn" href="${pageContext.servletContext.contextPath}/jobs" > I'm looking for a job</a>
-        <a class="btn" href="#" > I want to advertise</a>
+        <p><img src="images/1.jpeg"></p>
+        <a class="btn" href="${pageContext.servletContext.contextPath}/jobs" > Find a job!</a>
     </div>
 </div>
 </body>

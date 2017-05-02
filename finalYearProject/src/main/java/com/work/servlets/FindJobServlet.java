@@ -19,6 +19,9 @@ public class FindJobServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        new MainPageServlet().initLoginOfAuthorizedUser(req);
+        req.setAttribute("ourBaseChecked", true);
+        req.setAttribute("outBaseChecked", false);
         req.setAttribute("keyword", "");
         req.getRequestDispatcher("jsp/FindVacancy.jsp").forward(req, resp);
     }
@@ -26,11 +29,16 @@ public class FindJobServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String keyword = req.getParameter("keyword");
-        List<Vacancy> vacancyList = service.getVacancyListByKeyword(keyword);
+        req.setAttribute("ourBaseChecked", req.getParameter("ourBase") != null);
+        req.setAttribute("outBaseChecked", req.getParameter("outBase") != null);
 
-        req.setAttribute("matches", vacancyList);
-        req.setAttribute("keyword", keyword);
+        if(req.getParameter("ourBase") != null) {
+            String keyword = req.getParameter("keyword");
+            List<Vacancy> vacancyList = service.getVacancyListByKeyword(keyword);
+
+            req.setAttribute("matches", vacancyList);
+            req.setAttribute("keyword", keyword);
+        }
         req.getRequestDispatcher("jsp/FindVacancy.jsp").forward(req, resp);
     }
 }

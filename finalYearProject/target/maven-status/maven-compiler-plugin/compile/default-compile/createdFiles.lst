@@ -2,6 +2,7 @@ com\work\Transformer.class
 com\work\dao\api\AccountDAO.class
 com\work\servlets\AuthorizationServlet.class
 com\work\dao\impl\AccountDAOImpl.class
+com\work\servlets\SignOutServlet.class
 com\work\service\impl\CompanyServiceImpl.class
 com\work\dao\api\DAO.class
 com\work\dto\AccountDTO.class
@@ -15,6 +16,7 @@ com\work\model\Account.class
 com\work\servlets\EmployeeRegistrationServlet.class
 com\work\dao\impl\EmployeeDAOImpl.class
 com\work\service\Settings.class
+com\work\servlets\PersonalAreaServlet.class
 com\work\servlets\AboutServlet.class
 com\work\service\impl\EmployeeServiceImpl.class
 com\work\servlets\CompanyRegistrationServlet.class

@@ -16,7 +16,7 @@ public class VacancyDAOImpl implements VacancyDAO {
     private final Connection connection;
 
     public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.vacancy";
-    public static final String SQL_SELECT_BY_KEYWORD = "SELECT * FROM schema.vacancy WHERE name LIKE ?";
+    public static final String SQL_SELECT_BY_KEYWORD = "SELECT * FROM mydb.vacancy WHERE name LIKE ?";
     public static final String SQL_INSERT = "INSERT INTO mydb.vacancy(name, type, description, sourceLink) " +
             "VALUES (?, ?, ?, ?) ";
     public static final String SQL_DELETE = "DELETE FROM mydb.vacancy WHERE id = ";

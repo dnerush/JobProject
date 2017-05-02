@@ -42,27 +42,6 @@ public class AuthorizationServlet extends HttpServlet {
         {
             req.getRequestDispatcher("jsp/Authorization.jsp").forward(req, resp);
         }
-
-        /*List<Employee> employees = employeeService.getAll();
-        List<Company> companies = companyService.getAll();
-
-        List<Accountable> userList = new LinkedList<>();
-        userList.addAll(employees);
-        userList.addAll(companies);
-
-        Accountable accountable;
-        for(Accountable user : userList) {
-            if(user instanceof Employee) {
-                if (((Employee) user).getAccount().getLogin().equals(login) && ((Employee) user).getAccount().getPassword().equals(password)) {
-                    req.getSession().setAttribute("session_user", (Employee)user);
-                    break;
-                }
-                else if(((Company) user).getAccount().getLogin().equals(login) && ((Company) user).getAccount().getPassword().equals(password)) {
-                    req.getSession().setAttribute("session_user", (Company)user);
-                    break;
-                }
-            }
-        }*/
     }
 
     /*

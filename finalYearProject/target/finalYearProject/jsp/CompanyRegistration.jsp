@@ -9,19 +9,6 @@
     <title>Registration</title>
 </head>
 <body>
-    <div class="menu">
-        <ul>
-            <li><a href="${pageContext.servletContext.contextPath}/mainPage">MAIN</a></li>
-            <li><a href="${pageContext.servletContext.contextPath}/about">ABOUT</a></li>
-            <li><a href="${pageContext.servletContext.contextPath}/jobs">JOBS</a></li>
-            <li><a href="">EMPLOYEE</a></li>
-            <li><a href="">CONTACT</a></li>
-        </ul>
-        <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Employee_Registration</a></li>
-        <li><a href="${pageContext.servletContext.contextPath}/company_registration">Company_Registration</a></li>
-        <li><a href="${pageContext.servletContext.contextPath}/authorization">Autorization</a></li>
-    </div>
-
     <form action="${pageContext.servletContext.contextPath}/company_registration" method="POST">
         <fieldset>
             Company registration

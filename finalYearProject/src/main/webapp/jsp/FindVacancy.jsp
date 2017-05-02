@@ -25,16 +25,31 @@
         </div>
 
         <div class="menu">
-            <ul>
-                <li><a href="${pageContext.servletContext.contextPath}/mainPage">MAIN</a></li>
-                <li><a href="${pageContext.servletContext.contextPath}/about">ABOUT</a></li>
-                <li><a href="${pageContext.servletContext.contextPath}/jobs">JOBS</a></li>
-                <li><a href="">EMPLOYEE</a></li>
-                <li><a href="">CONTACT</a></li>
+            <li>
+            <li><a href="${pageContext.servletContext.contextPath}/mainPage">MAIN</a></li>
+            <li><a href="${pageContext.servletContext.contextPath}/about">ABOUT</a></li>
+            <li><a href="${pageContext.servletContext.contextPath}/jobs">JOBS</a></li>
+            <li><a href="">CONTACT</a></li>
+            <li>
+                <c:if test="${account_session == null}">
+                    <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Registration</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/authorization">Authorization</a></li>
+                </c:if>
+            </li>
+            <li>
+                <c:if test="${account_session != null}">
+                    <li><a href="${pageContext.servletContext.contextPath}/personal_area"> ${accountLogin} </a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/sign_out">Sign out</a></li>
+                </c:if>
+            </li>
             </ul>
         </div>
         <div class="information">
             <form action="${pageContext.servletContext.contextPath}/jobs" method="POST">
+
+                <input type="checkbox" name="ourBase" value="ourBase" <c:if test="${ourBaseChecked}">checked</c:if> >Job search base
+                <input type="checkbox" name="outBase" value="outBase" <c:if test="${outBaseChecked}">checked</c:if> >Search outside<Br>
+
                 <div>
                     Keyword:<input style="margin-left: 23px" type="text" name="keyword" id="name" value= ${keyword}>
                     <input type="submit" value="Find"/>
