@@ -33,4 +33,16 @@ public class AccountServiceImpl implements AccountService {
     public List<Account> accountList() {
         return accountDAO.get();
     }
+
+    public void deleteAccount(int id) {
+        accountDAO.delete(id);
+    }
+
+    public int getAccountId(Account account) {
+        return accountDAO.getAccountID(account);
+    }
+
+    public Account getAccountByID(int id) {
+        return accountDAO.getAccountByID(id);
+    }
 }

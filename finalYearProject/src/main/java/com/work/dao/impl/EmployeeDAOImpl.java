@@ -15,10 +15,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     private final Connection connection;
 
-    public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.employee";
-    public static final String SQL_SELECT_BY_ID = "SELECT * FROM mydb.employee WHERE Account_idAccount = ?";
-    public static final String SQL_INSERT = "INSERT INTO mydb.employee(Account_idAccount, secondName, age, photoPath, country, " +
+    private static final String SQL_SELECT_ALL = "SELECT * FROM mydb.employee";
+    private static final String SQL_SELECT_BY_ID = "SELECT * FROM mydb.employee WHERE Account_idAccount = ?";
+    private static final String SQL_INSERT = "INSERT INTO mydb.employee(Account_idAccount, secondName, age, photoPath, country, " +
             " city, sex, name) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+    private static final String SQL_DELETE = "DELETE FROM mydb.employee WHERE Account_idAccount = ?";
 
     public EmployeeDAOImpl() {
         final Settings settings = Settings.getInstance();
@@ -57,18 +58,25 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }
     }
 
-    public Employee update(Employee employee) {
-        return null;
+    @Override
+    public void update(int id) {
+
     }
 
-    public Employee delete(Employee employee) {
-        return null;
+    @Override
+    public void delete(int id) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
-    public Employee getEmployeeByID(long id) {
+    public Employee getEmployeeByID(int id) {
         Employee foundEmployee = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_BY_ID);) {
-            preparedStatement.setInt(1, (int)id);
+            preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()) {
                 foundEmployee = new Employee();
@@ -92,7 +100,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         Employee employee;
         while(rs.next()) {
             employee = new Employee();
-            employee.setId(rs.getLong("Account_idAccount"));
+            employee.setId(rs.getInt("Account_idAccount"));
             employee.setName(rs.getString("name"));
             employee.setSecondName(rs.getString("secondName"));
             employee.setAge(rs.getInt("age"));

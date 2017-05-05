@@ -1,4 +1,4 @@
-package com.work;
+package com.work.Addition;
 
 public class Transformer {
 

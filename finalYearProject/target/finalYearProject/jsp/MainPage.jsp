@@ -42,7 +42,7 @@
                 </li>
             </ul>
         </div>
-        <h1>Hi there! Here you can find the right vacancy for you or advertise.</h1>
+        <br><br>Hi there! Here you can find the right vacancy for you or advertise.
         <p><img src="images/1.jpeg"></p>
         <a class="btn" href="${pageContext.servletContext.contextPath}/jobs" > Find a job!</a>
     </div>

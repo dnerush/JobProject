@@ -7,7 +7,6 @@ import com.work.dto.AccountDTO;
 import com.work.dto.CompanyDTO;
 import com.work.model.Account;
 import com.work.model.Company;
-import com.work.service.api.AccountService;
 import com.work.service.api.CompanyService;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     private final AccountDAO accountDAO = new AccountDAOImpl();
 
-    private final AccountService accountService = new AccountServiceImpl();
+    private final AccountServiceImpl accountService = new AccountServiceImpl();
 
     public void registrationCompany(CompanyDTO companyDTO) {
         // validation
@@ -44,7 +43,7 @@ public class CompanyServiceImpl implements CompanyService {
         company.setCity(companyDTO.getCity());
         company.setId(account.getId());
         // тянем с базы автоинкрементирующийся id аккаунта
-        long accountId = accountDAO.getAccountID(account);
+        int accountId = accountDAO.getAccountID(account);
         // инициализируем им employee id
         company.setId(accountId);
         companyDAO.save(company);
@@ -56,5 +55,12 @@ public class CompanyServiceImpl implements CompanyService {
 
     public Company getCompanyByID(long id) {
         return companyDAO.getCompanyByID(id);
+    }
+
+    public void deleteEmployee(int id) {
+        // получаем аккаунт по id(Company.id == Account.id)
+        companyDAO.delete(id);
+        accountService.deleteAccount(id);
+
     }
 }

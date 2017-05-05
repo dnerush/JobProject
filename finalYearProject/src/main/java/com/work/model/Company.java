@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Company  {
 
-    private long id;
+    private int id;
     private String name;
     private String type;
     private String description;
@@ -16,7 +16,7 @@ public class Company  {
 
     public Company() { }
 
-    public Company(long id, String name, String type, String description, String logo, String country, String city) {
+    public Company(int id, String name, String type, String description, String logo, String country, String city) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -50,11 +50,11 @@ public class Company  {
         this.type = type;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

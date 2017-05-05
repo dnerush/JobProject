@@ -3,7 +3,7 @@ package com.work.model;
 
 public class Vacancy {
 
-    private long id;
+    private int id;
     private String name;
     private String type;
     private String description;
@@ -13,8 +13,8 @@ public class Vacancy {
 
     public Vacancy() { }
 
-    public Vacancy(long id, String name, String type, String description, String sourceLink, Boolean favourite) {
-        this.id = id;
+    public Vacancy(/*int id, */String name, String type, String description, String sourceLink, Boolean favourite) {
+        //this.id = id;
         this.name = name;
         this.type = type;
         this.description = description;
@@ -23,11 +23,11 @@ public class Vacancy {
     }
 
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

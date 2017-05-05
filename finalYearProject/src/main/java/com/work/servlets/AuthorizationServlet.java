@@ -27,6 +27,7 @@ public class AuthorizationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        new MainPageServlet().initLoginOfAuthorizedUser(req);
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
@@ -36,7 +37,8 @@ public class AuthorizationServlet extends HttpServlet {
         if((foundAccount = searchInAccountList(accountList, login, password)) != null) {
             HttpSession session = req.getSession();
             session.setAttribute("account_session", foundAccount);
-            req.getRequestDispatcher("jsp/MainPage.jsp").forward(req, resp);
+            resp.sendRedirect(String.format("%s%s", req.getContextPath(), "/mainPage"));
+            //req.getRequestDispatcher("jsp/MainPage.jsp").forward(req, resp);
         }
         else
         {

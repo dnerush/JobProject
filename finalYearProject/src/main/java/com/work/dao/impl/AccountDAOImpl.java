@@ -15,9 +15,11 @@ public class AccountDAOImpl implements AccountDAO {
 
     private final Connection connection;
 
-    public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.account";
-    public static final String SQL_INSERT = "INSERT INTO mydb.account(login, password, email, phone) VALUES (?, ?, ?, ?)";
-    public static final String SQL_SELECT_ID = "SELECT * FROM mydb.account WHERE login = ? AND  password = ?";
+    private static final String SQL_SELECT_ALL = "SELECT * FROM mydb.account";
+    private static final String SQL_INSERT = "INSERT INTO mydb.account(login, password, email, phone) VALUES (?, ?, ?, ?)";
+    private static final String SQL_SELECT_ID = "SELECT * FROM mydb.account WHERE login = ? AND  password = ?";
+    private static final String SQL_DELETE = "DELETE FROM mydb.account WHERE idAccount = ?";
+    private static final String SQL_GET_BY_ID = "SELECT * FROM mydb.account WHERE idAccount = ?";
 
     public AccountDAOImpl() {
         final Settings settings = Settings.getInstance();
@@ -55,32 +57,53 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public Account update(Account account) {
-        return null;
+    public void update(int id) {
+
     }
 
     @Override
-    public Account delete(Account account) {
-        return null;
+    public void delete(int id) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     @Override
-    public long getAccountID(Account account) {
-        long accountID;
+    public int getAccountID(Account account) {
+        int accountID;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_ID)) {
             preparedStatement.setString(1, account.getLogin());
             preparedStatement.setString(2, account.getPassword());
             ResultSet rs = preparedStatement.executeQuery();
-            accountID = goOverResultSet(rs);
+            if(rs.next()) accountID = rs.getInt("idAccount");
+            else throw new SQLException();
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
         }
         return accountID;
     }
 
-    private long goOverResultSet(ResultSet rs) throws SQLException {
-        rs.next();
-        return rs.getLong("idAccount");
+    @Override
+    public Account getAccountByID(int id) {
+        Account account = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_BY_ID)) {
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            rs.next();
+            account = new Account();
+            account.setId(rs.getInt("idAccount"));
+            account.setLogin(rs.getString("login"));
+            account.setPassword(rs.getString("password"));
+            account.setEmail(rs.getString("email"));
+            account.setPhone(rs.getString("phone"));
+
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
+        return account;
     }
 
     private List<Account> extractResultSet(ResultSet rs) throws SQLException {
@@ -88,7 +111,7 @@ public class AccountDAOImpl implements AccountDAO {
         Account account;
         while(rs.next()) {
             account = new Account();
-            account.setId(rs.getLong("idAccount"));
+            account.setId(rs.getInt("idAccount"));
             account.setLogin(rs.getString("login"));
             account.setPassword(rs.getString("password"));
             account.setEmail(rs.getString("email"));

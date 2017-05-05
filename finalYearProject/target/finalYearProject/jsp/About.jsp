@@ -45,10 +45,6 @@
         </div>
 
         <br><br>
-        <br>${requestScope.get("account").getLogin()}
-        <br>${requestScope.get("account").getPassword()}
-        <br>${requestScope.get("account").getEmail()}
-        <br> Hello, dear ${requestScope.get("employee").getName()} !
         <h1>Andrew and Dmitry welcome you! Ukraine, Kharkov</h1>
         <a class="btn" href="${pageContext.servletContext.contextPath}/mainPage" > Come back </a>
     </div>

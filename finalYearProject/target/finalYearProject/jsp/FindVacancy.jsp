@@ -42,16 +42,19 @@
                     <li><a href="${pageContext.servletContext.contextPath}/sign_out">Sign out</a></li>
                 </c:if>
             </li>
-            </ul>
+
         </div>
         <div class="information">
             <form action="${pageContext.servletContext.contextPath}/jobs" method="POST">
 
-                <input type="checkbox" name="ourBase" value="ourBase" <c:if test="${ourBaseChecked}">checked</c:if> >Job search base
-                <input type="checkbox" name="outBase" value="outBase" <c:if test="${outBaseChecked}">checked</c:if> >Search outside<Br>
-
                 <div>
-                    Keyword:<input style="margin-left: 23px" type="text" name="keyword" id="name" value= ${keyword}>
+                    <select name="select">
+                        <option <c:if test="${isGlobal == false}"> selected </c:if> value="local" >Local search</option>
+                        <option <c:if test="${isGlobal == true}"> selected </c:if>  value="global" >Global search</option>
+                    </select>
+
+                    <div style="color:#0000ff">Keyword:</div>
+                    <input style="margin-left: 23px" type="text" name="keyword" id="name" value= ${keyword}>
                     <input type="submit" value="Find"/>
                 </div>
                 <table>
@@ -59,14 +62,20 @@
                     <div id="content">
                             <tr>
                                 <th>Name</th>
-                                <th>Type</th>
+                                <th>
+                                    <c:if test="${isGlobal == true}"> Company name </c:if>
+                                    <c:if test="${isGlobal == false}"> Type </c:if>
+                                </th>
                                 <th>Description</th>
                                 <th>Link</th>
                             </tr>
                             <c:forEach items="${matches}" var="vacancy" varStatus="status">
                                 <tr>
                                     <td>${vacancy.getName()}</td>
-                                    <td>${vacancy.getType()}</td>
+                                    <td>
+                                        <c:if test="${isGlobal == true}"> ${vacancy.getCompanyName()} </c:if>
+                                        <c:if test="${isGlobal == false}"> ${vacancy.getType()} </c:if>
+                                    </td>
                                     <td>${vacancy.getDescription()}</td>
                                     <td><a href=${vacancy.getSourceLink()}>Link</a></td>
                                 </tr>

@@ -15,10 +15,11 @@ public class CompanyDAOImpl implements CompanyDAO {
 
     private final Connection connection;
 
-    public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.company";
-    public static final String SQL_INSERT = "INSERT INTO mydb.company(Account_idAccount, name, type, description, logoPath, " +
+    private static final String SQL_SELECT_ALL = "SELECT * FROM mydb.company";
+    private static final String SQL_INSERT = "INSERT INTO mydb.company(Account_idAccount, name, type, description, logoPath, " +
             " country, city) VALUES (?, ?, ?, ?, ?, ?, ?) ";
-    public static final String SQL_SELECT_BY_ID = "SELECT * FROM mydb.company WHERE Account_idAccount = ?";
+    private static final String SQL_SELECT_BY_ID = "SELECT * FROM mydb.company WHERE Account_idAccount = ?";
+    private static final String SQL_DELETE = "DELETE FROM mydb.company WHERE Account_idAccount = ?";
 
     public CompanyDAOImpl() {
         final Settings settings = Settings.getInstance();
@@ -59,13 +60,18 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public Company update(Company company) {
-        return null;
+    public void update(int id) {
+
     }
 
     @Override
-    public Company delete(Company company) {
-        return null;
+    public void delete(int id) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     public Company getCompanyByID(long id) {
@@ -94,7 +100,7 @@ public class CompanyDAOImpl implements CompanyDAO {
         Company company;
         while(rs.next()) {
             company = new Company();
-            company.setId(rs.getLong("Account_idAccount"));
+            company.setId(rs.getInt("Account_idAccount"));
             company.setName(rs.getString("name"));
             company.setType(rs.getString("type"));
             company.setDescription(rs.getString("description"));

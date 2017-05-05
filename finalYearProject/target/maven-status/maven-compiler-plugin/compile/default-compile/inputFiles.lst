@@ -5,6 +5,7 @@ D:\JobProject\finalYearProject\src\main\java\com\work\dto\AccountDTO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dto\EmployeeDTO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\CVDAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\AccountService.java
+D:\JobProject\finalYearProject\src\main\java\com\work\Addition\Transformer.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\AccountDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\EmployeeDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\CompanyServiceImpl.java
@@ -17,6 +18,7 @@ D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AboutServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\VacancyDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Employee.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\EmployeeRegistrationServlet.java
+D:\JobProject\finalYearProject\src\main\java\com\work\Addition\Parser.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\CompanyRegistrationServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\Settings.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\EmployeeDAO.java
@@ -26,12 +28,12 @@ D:\JobProject\finalYearProject\src\main\java\com\work\model\Company.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\CVService.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Account.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\VacancyService.java
+D:\JobProject\finalYearProject\src\main\java\com\work\Addition\FoundVacancy.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\AccountDAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\EmployeeService.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\EmployeeServiceImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\web\App.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\CompanyDAO.java
-D:\JobProject\finalYearProject\src\main\java\com\work\Transformer.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\SignOutServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Vacancy.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AuthorizationServlet.java

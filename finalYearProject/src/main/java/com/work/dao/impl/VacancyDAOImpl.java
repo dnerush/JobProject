@@ -15,11 +15,11 @@ public class VacancyDAOImpl implements VacancyDAO {
 
     private final Connection connection;
 
-    public static final String SQL_SELECT_ALL = "SELECT * FROM mydb.vacancy";
-    public static final String SQL_SELECT_BY_KEYWORD = "SELECT * FROM mydb.vacancy WHERE name LIKE ?";
-    public static final String SQL_INSERT = "INSERT INTO mydb.vacancy(name, type, description, sourceLink) " +
+    private static final String SQL_SELECT_ALL = "SELECT * FROM mydb.vacancy";
+    private static final String SQL_SELECT_BY_KEYWORD = "SELECT * FROM mydb.vacancy WHERE name LIKE ?";
+    private static final String SQL_INSERT = "INSERT INTO mydb.vacancy(name, type, description, sourceLink) " +
             "VALUES (?, ?, ?, ?) ";
-    public static final String SQL_DELETE = "DELETE FROM mydb.vacancy WHERE id = ";
+    private static final String SQL_DELETE = "DELETE FROM mydb.vacancy WHERE idvacancy = ?";
 
 
     public VacancyDAOImpl() {
@@ -32,6 +32,7 @@ public class VacancyDAOImpl implements VacancyDAO {
         }
     }
 
+    @Override
     public List<Vacancy> get() {
         List<Vacancy> vacancyList;
         try (Statement statement = connection.createStatement();
@@ -56,6 +57,7 @@ public class VacancyDAOImpl implements VacancyDAO {
         return vacancyList;
     }
 
+    @Override
     public void save(Vacancy vacancy) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT)) {
             preparedStatement.setString(1, vacancy.getName());
@@ -68,11 +70,20 @@ public class VacancyDAOImpl implements VacancyDAO {
         }
     }
 
-    public Vacancy update(Vacancy vacancy) {
-        return null;
+    @Override
+    public void update(int id) {
+
     }
 
-    public Vacancy delete(Vacancy vacancy) { return null; }
+    @Override
+    public void delete(int id) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
 
     private List<Vacancy> extractResultSet(ResultSet rs) throws SQLException {
         List<Vacancy> vacancyList = new ArrayList<>();
@@ -85,7 +96,7 @@ public class VacancyDAOImpl implements VacancyDAO {
             vacancy.setDescription(rs.getString("description"));
             vacancy.setSourceLink(rs.getString("sourceLink"));
             int isFavorite = rs.getInt("isFavorite");
-            vacancy.setFavourite((isFavorite == 0 ? false : true));
+            vacancy.setFavourite(!(isFavorite == 0));
             vacancyList.add(vacancy);
         }
         return vacancyList;

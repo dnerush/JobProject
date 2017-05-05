@@ -2,7 +2,7 @@ package com.work.model;
 
 public class Account {
 
-    private long id;
+    private int id;
     private String login;
     private String password;
     private String email;
@@ -10,7 +10,7 @@ public class Account {
 
     public Account() {}
 
-    public Account(long id, String login, String password, String email, String phone) {
+    public Account(int id, String login, String password, String email, String phone) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -18,11 +18,11 @@ public class Account {
         this.phone = phone;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface DAO<T> {
     List<T> get();
-    void save(T cv);
-    T update(T cv);
-    T delete(T cv);
+    void save(T obj);
+    void update(int obj);
+    void delete(int obj);
 }

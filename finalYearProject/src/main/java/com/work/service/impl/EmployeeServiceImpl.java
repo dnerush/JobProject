@@ -1,14 +1,11 @@
 package com.work.service.impl;
 
-import com.work.dao.api.AccountDAO;
 import com.work.dao.api.EmployeeDAO;
-import com.work.dao.impl.AccountDAOImpl;
 import com.work.dao.impl.EmployeeDAOImpl;
 import com.work.dto.AccountDTO;
 import com.work.dto.EmployeeDTO;
 import com.work.model.Account;
 import com.work.model.Employee;
-import com.work.service.api.AccountService;
 import com.work.service.api.EmployeeService;
 
 import java.util.List;
@@ -18,11 +15,9 @@ import java.util.List;
  */
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final EmployeeDAO emplyeeDAO = new EmployeeDAOImpl();
+    private final EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
-    private final AccountDAO accountDAO = new AccountDAOImpl();
-
-    private final AccountService accountService = new AccountServiceImpl();
+    private final AccountServiceImpl accountService = new AccountServiceImpl();
 
     public void registrationEmployee(EmployeeDTO employeeDTO) {
         // validation
@@ -47,17 +42,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setCountry(employeeDTO.getCountry());
         employee.setCity(employeeDTO.getCity());
         // тянем с базы автоинкрементирующийся id аккаунта
-        long accountId = accountDAO.getAccountID(account);
+        int accountId = accountService.getAccountId(account);
         // инициализируем им employee id
         employee.setId(accountId);
-        emplyeeDAO.save(employee);
+        employeeDAO.save(employee);
     }
 
     public List<Employee> employeeList() {
-        return emplyeeDAO.get();
+        return employeeDAO.get();
     }
 
-    public Employee getEmployeeByID(long id) {
-        return emplyeeDAO.getEmployeeByID(id);
+    public Employee getEmployeeByID(int id) {
+        return employeeDAO.getEmployeeByID(id);
+    }
+
+    public void deleteEmployee(int id) {
+        // получаем аккаунт по id(Employee.id == Account.id)
+        employeeDAO.delete(id);
+        accountService.deleteAccount(id);
+
     }
 }

@@ -25,8 +25,8 @@ public class VacancyServiceImpl implements VacancyService {
         vacancyDAO.save(vacancy);
     }
 
-    public void delete(Vacancy vacancy) {
-        vacancyDAO.delete(vacancy);
+    public void deleteVacancy(int id) {
+        vacancyDAO.delete(id);
     }
 
 }

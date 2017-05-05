@@ -28,7 +28,6 @@
                 <li><a href="${pageContext.servletContext.contextPath}/about">ABOUT</a></li>
                 <li><a href="${pageContext.servletContext.contextPath}/jobs">JOBS</a></li>
                 <li><a href="">CONTACT</a></li>
-                <li>
                     <c:if test="${account_session == null}">
                         <li><a href="${pageContext.servletContext.contextPath}/employee_registration">Registration</a></li>
                         <li><a href="${pageContext.servletContext.contextPath}/authorization">Authorization</a></li>
@@ -37,10 +36,13 @@
                         <li><a href="${pageContext.servletContext.contextPath}/personal_area"> ${accountLogin} </a></li>
                         <li><a href="${pageContext.servletContext.contextPath}/sign_out">Sign out</a></li>
                     </c:if>
-                </li>
             </ul>
         </div>
-        Personal Area
+        <br>Personal Area
+        <br>${requestScope.get("account").getLogin()}
+        <br>${requestScope.get("account").getPassword()}
+        <br>${requestScope.get("account").getEmail()}
+        <br> Hello, dear ${requestScope.get("employee").getName()} !
     </div>
 </div>
 </body>

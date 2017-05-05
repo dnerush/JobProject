@@ -2,7 +2,7 @@ package com.work.model;
 
 public class Employee {
 
-    private long id;
+    private int id;
     private String name;
     private String secondName;
     private int age;
@@ -11,7 +11,7 @@ public class Employee {
     private String country;
     private String city;
 
-    public Employee(long id, String name, String surname, String secondName, int age, String sex, String photoPath, String country, String city) {
+    public Employee(int id, String name, String surname, String secondName, int age, String sex, String photoPath, String country, String city) {
         this.id = id;
         this.name = name;
         this.secondName = secondName;
@@ -24,11 +24,11 @@ public class Employee {
 
     public Employee() { }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

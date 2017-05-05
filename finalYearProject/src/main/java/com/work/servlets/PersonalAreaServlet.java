@@ -38,7 +38,6 @@ public class PersonalAreaServlet extends HttpServlet {
         }
 
         req.setAttribute("account", account);
-        req.getRequestDispatcher("jsp/About.jsp").forward(req, resp);
 
         req.getRequestDispatcher("jsp/PersonalArea.jsp").forward(req, resp);
     }
