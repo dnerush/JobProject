@@ -426,6 +426,9 @@ input:-ms-input-placeholder {
     color:white;
 }
 
+form {
+    text-align: center;
+}
 
 .home-bg .header-details{
     padding-top:220px;

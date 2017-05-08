@@ -20,13 +20,14 @@ public class PersonalAreaServlet extends HttpServlet {
 
     private final EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
     private final CompanyServiceImpl companyService = new CompanyServiceImpl();
+    private final MainPageServlet mainPageServlet = new MainPageServlet();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Employee employee;
         Company company;
 
-        new MainPageServlet().initLoginOfAuthorizedUser(req);
+        mainPageServlet.initLoginOfAuthorizedUser(req);
         HttpSession se = req.getSession();
         Account account = (Account) se.getAttribute("account_session");
 

@@ -19,11 +19,12 @@ import java.util.List;
 public class FindJobServlet extends HttpServlet {
 
     private final VacancyServiceImpl service = new VacancyServiceImpl();
-
     private final Parser parser = new Parser();
+    private final MainPageServlet mainPageServlet = new MainPageServlet();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        mainPageServlet.initLoginOfAuthorizedUser(req);
         req.setAttribute("isGlobal", false);
         req.setAttribute("keyword", "");
         req.getRequestDispatcher("jsp/FindVacancy.jsp").forward(req, resp);
@@ -54,10 +55,7 @@ public class FindJobServlet extends HttpServlet {
             req.setAttribute("isGlobal", false);
         }
 
-        /*if(req.getParameter("select") != null && req.getParameter("select").equals("global"))
-            req.setAttribute("isGlobal", true);
-        else
-            req.setAttribute("isGlobal", false);*/
+        mainPageServlet.initLoginOfAuthorizedUser(req);
         req.getRequestDispatcher("jsp/FindVacancy.jsp").forward(req, resp);
     }
 }
