@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css" />
 
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -103,7 +104,6 @@
                 <div class="row">
                     <div class="col-md-12"><form>
                         <div class="form-group">
-
                             <input type="text" name="keyword" id="name" value= "${keyword}" class="form-control find-form" placeholder="Request">
                         </div>
                         <div class="form-group">
@@ -117,6 +117,45 @@
                 </div>
                 </form>
 
+                <c:if test="${matches != null && matches.size() != 0}">
+                <table>
+                <div id="page">
+                    <div id="content">
+                        <tr>
+                            <th>Name</th>
+                            <th>
+                                <c:if test="${isGlobal == true}"> Company name </c:if>
+                                <c:if test="${isGlobal == false}"> Type </c:if>
+                            </th>
+                            <th>Description</th>
+                        </tr>
+                        <c:forEach items="${matches}" var="vacancy" varStatus="status">
+                            <tr onClick="location.href='${vacancy.getSourceLink()}'">
+                                    <td>${vacancy.getName()}</td>
+                                    <td>
+                                        <c:if test="${isGlobal == true}"> ${vacancy.getCompanyName()} </c:if>
+                                        <c:if test="${isGlobal == false}"> ${vacancy.getType()} </c:if>
+                                    </td>
+                                    <td>${vacancy.getDescription()}</td>
+                            </tr>
+                        </c:forEach>
+                    </div>
+                </div>
+                </table>
+                    <nav aria-label="...">
+                        <ul class="pager">
+                            <c:if test="${isGlobal == true && matches.size() != 0}">
+                                <li><a href="${pageContext.servletContext.contextPath}/jobs?act=previous&keyword=${keyword}&isGlobal=${isGlobal}">Previous</a></li>
+                                ${page}
+                                <li><a href="${pageContext.servletContext.contextPath}/jobs?act=next&keyword=${keyword}&isGlobal=${isGlobal}">Next</a></li>
+                            </c:if>
+                        </ul>
+                    </nav>
+                </c:if>
+
+                <c:if test="${matches.size() == 0}">
+                    <p>Your search for ${keyword} jobs not found.</p>
+                </c:if>
             </section>
         </div>
     </div>
@@ -177,8 +216,6 @@
         );
     });
 </script>
-
-
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 D:\JobProject\finalYearProject\src\main\java\com\work\service\api\CompanyService.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\AccountServiceImpl.java
+D:\JobProject\finalYearProject\src\main\java\com\work\servlets\NextGlobalPageServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\VacancyDAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dto\AccountDTO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dto\EmployeeDTO.java
@@ -12,6 +13,7 @@ D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\CompanyServic
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\CompanyDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\MainPageServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\impl\VacancyServiceImpl.java
+D:\JobProject\finalYearProject\src\main\java\com\work\servlets\PreviousGlobalPageServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\api\DAO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dto\CompanyDTO.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AboutServlet.java

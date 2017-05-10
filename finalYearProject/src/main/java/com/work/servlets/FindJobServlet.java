@@ -18,15 +18,43 @@ import java.util.List;
  */
 public class FindJobServlet extends HttpServlet {
 
-    private final VacancyServiceImpl service = new VacancyServiceImpl();
-    private final Parser parser = new Parser();
     private final MainPageServlet mainPageServlet = new MainPageServlet();
+    private final VacancyServiceImpl service = new VacancyServiceImpl();
+    /*
+    * Объект, с помощью которого выполняется парсинг сайтов
+     */
+    private Parser parser = new Parser();
+    /*
+    * Ключевое слово
+    * */
+    private String keyword;
+    /*
+    * Номер страницы
+    * */
+    private int page = 1;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         mainPageServlet.initLoginOfAuthorizedUser(req);
-        req.setAttribute("isGlobal", false);
-        req.setAttribute("keyword", "");
+
+        req.setAttribute("isGlobal", ((req.getParameter("isGlobal")) != null) ? req.getParameter("isGlobal") : false);
+        req.setAttribute("keyword", ((req.getParameter("keyword")) != null) ? req.getParameter("keyword") : "");
+        req.setAttribute("page", ((req.getParameter("page")) != null) ? req.getParameter("page") : 1);
+
+        String spage; // строковое представление идентификатора страницы
+        if((spage = req.getParameter("act")) != null) {
+            //if(req.getParameter("select").equals("global")) {
+                page += (req.getParameter("act").equals("next") ? 1 : (page != 1 ? -1 : 0));
+                keyword = req.getParameter("keyword");
+                List<FoundVacancy> foundVacancies = parser.getVacancies(keyword, page);
+                if(foundVacancies.size() == 0) { // если следующая страница пустая - мы делаем "шаг назад"
+                    --page;
+                    foundVacancies = parser.getVacancies(keyword, page);
+                }
+                req.setAttribute("matches", foundVacancies);
+            //}
+        }
+
         req.getRequestDispatcher("jsp/FindVacancy.jsp").forward(req, resp);
     }
 
@@ -34,14 +62,14 @@ public class FindJobServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String keyword = req.getParameter("keyword");
 
-        // сохраняем введенной пользователем ключевое слово, чтоб мы могли отобразить его в том же поле про redirect'e
+        // сохраняем введенной пользователем ключевое слово, чтоб мы могли отобразить его в том же поле при redirect'e
         req.setAttribute("keyword", keyword);
 
         if(req.getParameter("select").equals("global")) {
             HttpSession se = req.getSession();
             if(se.getAttribute("account_session") != null)
             {
-                List<FoundVacancy> foundVacancies = parser.getVacancies(keyword);
+                List<FoundVacancy> foundVacancies = parser.getVacancies(keyword, page);
                 req.setAttribute("matches", foundVacancies);
                 req.setAttribute("isGlobal", true);
             } else { // в ином случае делаем redirect на авторизацию

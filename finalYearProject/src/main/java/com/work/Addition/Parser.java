@@ -18,22 +18,21 @@ public class Parser {
         getVacancyInformation(links);
     }*/
 
-    public List<FoundVacancy> getVacancies(String keyword) throws IOException {
-        List<String> links = getVacancyFromWEB(keyword);
+    public List<FoundVacancy> getVacancies(String keyword, int page) throws IOException {
+        List<String> links = getVacancyFromWEB(keyword, page);
         return getVacancyInformation(links);
     }
 
     //method for get all links to vacancies on one page (print links to vacancy)
-    private List<String> getVacancyFromWEB(String keyword) throws IOException {
+    private List<String> getVacancyFromWEB(String keyword, int page) throws IOException {
         List<String> listOfVacanciesUrl = new ArrayList<>();
-        String url = "https://www.work.ua/jobs-kharkiv-" + keyword + "/?page=1";
+        String url = "https://www.work.ua/jobs-kharkiv-" + keyword + "/?page=" + page;
         Document doc = Jsoup.connect(url).get();
         Elements elementsByTag = doc.getElementsByTag("h2");
 
         for (Element element1 : elementsByTag) {
             if(!element1.getElementsByTag("a").attr("href").equals("")){
                 listOfVacanciesUrl.add(element1.getElementsByTag("a").attr("abs:href"));
-                System.out.println(element1.getElementsByTag("a").attr("abs:href"));
             }
         }
         return listOfVacanciesUrl;
