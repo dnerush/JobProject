@@ -84,25 +84,6 @@
     <url-pattern>/personal_area</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <servlet-name>NextGlobalPage</servlet-name>
-    <servlet-class>com.work.servlets.NextGlobalPageServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>NextGlobalPage</servlet-name>
-    <url-pattern>/next_global</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>PreviousGlobalPage</servlet-name>
-    <servlet-class>com.work.servlets.PreviousGlobalPageServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>PreviousGlobalPage</servlet-name>
-    <url-pattern>/previous_global</url-pattern>
-  </servlet-mapping>
 </web-app>
 
 

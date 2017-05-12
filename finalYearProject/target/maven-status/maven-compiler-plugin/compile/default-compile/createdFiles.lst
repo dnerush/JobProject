@@ -16,8 +16,6 @@ com\work\model\Account.class
 com\work\servlets\EmployeeRegistrationServlet.class
 com\work\dao\impl\EmployeeDAOImpl.class
 com\work\service\Settings.class
-com\work\servlets\PreviousGlobalPageServlet.class
-com\work\servlets\NextGlobalPageServlet.class
 com\work\servlets\PersonalAreaServlet.class
 com\work\servlets\AboutServlet.class
 com\work\service\impl\EmployeeServiceImpl.class

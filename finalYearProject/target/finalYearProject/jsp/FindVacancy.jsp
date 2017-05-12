@@ -130,7 +130,7 @@
                             <th>Description</th>
                         </tr>
                         <c:forEach items="${matches}" var="vacancy" varStatus="status">
-                            <tr onClick="location.href='${vacancy.getSourceLink()}'">
+                            <tr onClick="location.href='${vacancy.getSourceLink()}'" class="mytable">
                                     <td>${vacancy.getName()}</td>
                                     <td>
                                         <c:if test="${isGlobal == true}"> ${vacancy.getCompanyName()} </c:if>
@@ -149,6 +149,7 @@
                                 ${page}
                                 <li><a href="${pageContext.servletContext.contextPath}/jobs?act=next&keyword=${keyword}&isGlobal=${isGlobal}">Next</a></li>
                             </c:if>
+                            <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
                         </ul>
                     </nav>
                 </c:if>
