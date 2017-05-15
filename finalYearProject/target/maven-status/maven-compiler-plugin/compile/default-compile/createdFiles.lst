@@ -1,3 +1,4 @@
+com\work\web\A.class
 com\work\dao\api\AccountDAO.class
 com\work\servlets\AuthorizationServlet.class
 com\work\dao\impl\AccountDAOImpl.class

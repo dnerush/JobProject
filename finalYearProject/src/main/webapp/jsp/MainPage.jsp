@@ -14,12 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
 
-
     <!--For Plugins external css-->
+    <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css" />
     <link rel="stylesheet" href="assets/css/plugins.css" />
     <link rel="stylesheet" href="assets/css/opensans-web-font.css" />
     <link rel="stylesheet" href="assets/css/montserrat-web-font.css" />
@@ -29,16 +29,33 @@
 
     <!--Theme custom css -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/modal_style.css">
 
     <!--Theme Responsive css-->
     <link rel="stylesheet" href="assets/css/responsive.css" />
 
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="jquery.min.js"></script>
+
+
+
+    <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+    <script src="http://bootstraptema.ru/_sf/3/394.js" type="text/javascript"></script>
 </head>
+
+
 <body>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
+
 
 <div class='preloader'><div class='loaded'>&nbsp;</div></div>
 <nav class="mainmenu navbar navbar-default navbar-fixed-top">
@@ -72,15 +89,19 @@
                 </ul>
                 <ul class="pull-right ">
 
+
                     <c:if test="${account_session == null}">
-                        <li><a class="button" href="${pageContext.servletContext.contextPath}/authorization">authorization</a></li>
-                        <li><a class="button" href="${pageContext.servletContext.contextPath}/employee_registration">registration</a></li>
+                        <!--<li><a class="button" href="${pageContext.servletContext.contextPath}/authorization">authorization</a></li>-->
+                        <li><a class="button" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">authorization</a></li>
+                        <%--<li><a class="button" href="${pageContext.servletContext.contextPath}/employee_registration">registration</a></li>--%>
+                        <li><a class="button" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">registration</a></li>
                     </c:if>
 
                     <c:if test="${account_session != null}">
                         <li><a class="button" href="${pageContext.servletContext.contextPath}/personal_area"> ${accountLogin} </a></li>
                         <li><a class="button" href="${pageContext.servletContext.contextPath}/sign_out">sign out</a></li>
                     </c:if>
+
 
                 </ul>
 
@@ -226,13 +247,67 @@
         </div>
     </div>
 </footer>
+</body>
+
+<div class="modal fade login" id="loginModal">
+    <div class="modal-dialog login animated">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Login with</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="error"></div>
+                        <div class="form loginBox">
+                            <form method="POST" action="${pageContext.servletContext.contextPath}/authorization " accept-charset="UTF-8">
+                                <input id="login" class="form-control" type="text" placeholder="Login" name="login" required >
+                                <input id="password" class="form-control" type="password" placeholder="Password" name="password" required>
+                                <input class="btn btn-default btn-login" type="submit" value="Login">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="content registerBox" style="display:none;">
+                        <div class="form">
+                            <form method="POST" action="${pageContext.servletContext.contextPath}/employee_registration" accept-charset="UTF-8">
+                                <input id="name" class="form-control" type="text" placeholder="Name" name="name">
+                                <input id="secondName" class="form-control" type="text" placeholder="Second name" name="secondName">
+                                <input id="age" class="form-control" type="text" placeholder="Age" name="age">
+                                <input id="sex" class="form-control" type="text" placeholder="Sex" name="sex">
+                                <input id="country" class="form-control" type="text" placeholder="Country" name="country">
+                                <input id="city" class="form-control" type="text" placeholder="City" name="city">
+                                <input id="phone" class="form-control" type="text" placeholder="Phone" name="phone">
+                                <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                                <input id="_login" class="form-control" type="text" placeholder="Login" name="login">
+                                <input id="password1" class="form-control" type="password" placeholder="Password" name="pass1">
+                                <input id="password2" class="form-control" type="password" placeholder="Confirm" name="pass2">
+                                <input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="forgot login-footer">
+ <span>Looking to
+ <a href="javascript: showRegisterForm();">create an account</a>
+ ?</span>
+                </div>
+                <div class="forgot register-footer" style="display:none">
+                    <span>Already have an account?</span>
+                    <a href="javascript: showLoginForm();">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
 
 
-<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-<script src="assets/js/vendor/bootstrap.min.js"></script>
-
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/main.js"></script>
 
 <script>
     //            scroll top
@@ -245,7 +320,3 @@
     });
 </script>
 
-
-
-</body>
-</html>

@@ -39,7 +39,6 @@ public class FindJobServlet extends HttpServlet {
 
         req.setAttribute("isGlobal", ((req.getParameter("isGlobal")) != null) ? req.getParameter("isGlobal") : false);
         req.setAttribute("keyword", ((req.getParameter("keyword")) != null) ? req.getParameter("keyword") : "");
-        req.setAttribute("page", ((req.getParameter("page")) != null) ? req.getParameter("page") : 1);
 
         String spage; // строковое представление идентификатора страницы
         if((spage = req.getParameter("act")) != null) {

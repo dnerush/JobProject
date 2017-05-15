@@ -28,6 +28,7 @@
 
     <!--Theme custom css -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/modal_style.css">
 
     <!--Theme Responsive css-->
     <link rel="stylesheet" href="assets/css/responsive.css" />
@@ -35,6 +36,9 @@
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 </head>
+
+
+
 <body>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -130,14 +134,14 @@
                             <th>Description</th>
                         </tr>
                         <c:forEach items="${matches}" var="vacancy" varStatus="status">
-                            <tr onClick="location.href='${vacancy.getSourceLink()}'" class="mytable">
-                                    <td>${vacancy.getName()}</td>
-                                    <td>
-                                        <c:if test="${isGlobal == true}"> ${vacancy.getCompanyName()} </c:if>
-                                        <c:if test="${isGlobal == false}"> ${vacancy.getType()} </c:if>
-                                    </td>
-                                    <td>${vacancy.getDescription()}</td>
-                            </tr>
+                        <tr onClick="location.href='${vacancy.getSourceLink()}'">
+                            <td>${vacancy.getName()}</td>
+                            <td>
+                                <c:if test="${isGlobal == true}"> ${vacancy.getCompanyName()} </c:if>
+                                <c:if test="${isGlobal == false}"> ${vacancy.getType()} </c:if>
+                            </td>
+                            <td>${vacancy.getDescription()}</td>
+                        </tr>
                         </c:forEach>
                     </div>
                 </div>
@@ -146,7 +150,6 @@
                         <ul class="pager">
                             <c:if test="${isGlobal == true && matches.size() != 0}">
                                 <li><a href="${pageContext.servletContext.contextPath}/jobs?act=previous&keyword=${keyword}&isGlobal=${isGlobal}">Previous</a></li>
-                                ${page}
                                 <li><a href="${pageContext.servletContext.contextPath}/jobs?act=next&keyword=${keyword}&isGlobal=${isGlobal}">Next</a></li>
                             </c:if>
                             <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
@@ -155,7 +158,7 @@
                 </c:if>
 
                 <c:if test="${matches.size() == 0}">
-                    <p>Your search for ${keyword} jobs not found.</p>
+                    <h5>Your search for ${keyword} jobs not found.</h5>
                 </c:if>
             </section>
         </div>
