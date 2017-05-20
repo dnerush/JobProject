@@ -1,3 +1,5 @@
+
+
 /*
 Author: XpeedStudio
 Author URI: http://themeforest.net/user/XpeedStudio/portfolio
@@ -9,7 +11,7 @@ html,
 body {
     background-color: #ffffff;
     font-size: 15px;
-    color: #a76686;
+    color: #565656;
     width: 100%;
     padding: 0;
     margin-left: 0;
@@ -18,7 +20,7 @@ body {
     font-weight: 300;
 }
 /*==========================================
-PRE LOADER
+PRE LOADER 
 ==========================================*/
 
 .preloader {
@@ -170,7 +172,7 @@ h6 {
 p {
     line-height: 1.5rem;
     font-size: 1.1rem;
-    color: #a76686;
+    color: #000000;
 }
 p:last-child {
     margin-bottom: 0px;
@@ -245,9 +247,7 @@ section .subtitle-half h5 {
     font-weight: 100;
     font-size: 17px;
 }
-section:nth-of-type(odd) {
-    background-color: #F9F9F9;
-}
+
 .fw-special-title-half {
     font-size: 2rem;
     line-height: 3rem;
@@ -258,7 +258,7 @@ section:nth-of-type(odd) {
     margin-bottom: 4rem;
 }
 .overlay {
-    background-color: rgb(167, 102, 134);
+    background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     min-height: 750px;
 }
@@ -272,7 +272,6 @@ section:nth-of-type(odd) {
     margin: auto;
 }
 .overlay-img {
-    background: rgba(194, 201, 204, 0.3);
     width: 100%;
     padding-top: 100px;
     padding-bottom: 100px;
@@ -374,12 +373,15 @@ input:-ms-input-placeholder {
 
 
 .home-bg{
-    min-height:700px;
+    /*background: url(../images/header-bg.jpg) no-repeat center top fixed;*/
+    background-color: #a76686;;
+    min-height: 687px;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     width: 100%;
     overflow: hidden;
-    background-image: url(../images/header-bg.png); /* Путь к фоновому рисунку */
-    background-position: left bottom; /* Положение фона */
-    background-repeat: repeat; /* Повторяем фон по горизонтали */
 }
 
 .mainmenu.navbar-default {
@@ -396,6 +398,7 @@ input:-ms-input-placeholder {
 }
 .navbar-nav {
     padding-top: 15px;
+    margin-left: 50px;
 }
 .mainmenu .brand-bg{
     background: #fa5c65;
@@ -406,14 +409,14 @@ input:-ms-input-placeholder {
 }
 
 
-.mainmenu .navbar-nav li a{
+.mainmenu .navbar-nav li a{ /*Шрифт на шапке*/
     text-transform:uppercase;
-    font-size:14px;
-    color:#263742;
+    font-size:20px;
+    color: #333;
 }
 
-.mainmenu.menu-bg{
-    background: #a76686;
+.mainmenu.menu-bg{ /*Панель(шапка)*/
+    background: #90526f;
     color: #a76686;
 }
 
@@ -426,12 +429,9 @@ input:-ms-input-placeholder {
     color:white;
 }
 
-form {
-    text-align: center;
-}
 
 .home-bg .header-details{
-    padding-top:220px;
+    padding-top:120px;
     color:#314a5b;
 }
 .home-bg .header-details h1{
@@ -495,45 +495,7 @@ form {
 
 }
 
-.portfolio{
-    color:#465065;
-    overflow:hidden;
-}
 
-.portfolio img{
-    margin-left: -79px;
-}
-
-.portfolio h1{
-    text-transform:uppercase;
-    font-size:26px;
-    margin-bottom:15px;
-    font-family: 'montserratbold';
-}
-.portfolio h1 i{
-    font-size:5px;
-    color:#fa5c65;
-}
-
-.portfolio a h4{
-    text-transform:uppercase;
-    font-size:14px;
-    color:#fa5c65;
-    font-family: 'montserratregular';
-}
-.portfolio a h4:hover{
-    color:pink;
-}
-.portfolio h5{
-    font-size:16px;
-}
-.portfolio h4 span i{
-    padding-left:5px;
-
-}
-.portfolio .item{
-    padding-top:10px;
-}
 .team-heading {
     margin-bottom: 40px;
 }
@@ -556,6 +518,7 @@ form {
 .team  img{
     float:left;
     margin-right: 20px;
+    border-radius: 35%;
 }
 
 .team .team-info h2{
@@ -620,12 +583,104 @@ form {
     right:50px;
     font-weight:bold;
 }
+.button{
+    color: #fff;
+    text-align: center;
+    width: 120px;
+    margin-top: 10px;
+    padding: 5px;
+    display: inline-block;
+    background: #fa5c65;
+    border:1px solid #fa5c65;
+    border-radius: 3px;
+}
+.form-group{
+    float: left;
+}
+.col-md-8{
+    width: 66.66666666%;
+}
+.col-md-4{
+    width: 33.33333333%;
+}
+.form-size {
+    display: block;
+    width: 500px;
+    height: 34px;
+
+}
+
+.btn-default {
+    margin-left: 150px;
+    height: 45px;
+    width: 170px;
+    background-color: #fa5c65;
+    color: #fff;
+    border-color: transparent;
+}
+.sel-form{
+    margin-left: 50px;
+}
+
+.find-form{
+    width: 550px;
+}
 
 
 
 
 
 
+.page {
+    position: relative;
+    margin: 0 0 0 0;
+    padding: 40px 40px 0 40px;
+    width: 900px;
+}
+
+.content {
+    float: left;
+    padding: 0;
+    width: 675px;
+}
+
+table {
+    margin: auto; /* Выравниваем по центру */
+    border-spacing: 0 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+th {
+    padding: 10px 20px;
+    background: #fa5c65;
+    color: #ffffff;
+    border-right: 2px solid;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+th:last-child {
+    border-right: none;
+}
+
+td:last-child {
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 2px solid #fa5c65;
+    border-bottom: 2px solid #fa5c65;
+    border-right: 2px solid #fa5c65;
+    color:#314a5b;
+    background: #ffffff;
+}
+td:first-child {
+    border-left: 2px solid #fa5c65;
+    border-right: 2px solid #fa5c65;
+}
 
 
 
