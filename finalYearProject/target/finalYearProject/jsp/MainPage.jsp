@@ -243,7 +243,9 @@
                     <p> Kharkov 2017. All rights reserved.</p>
                 </div>
             </div>
-
+            <c:if test="${error == true}">
+                openLoginModal();
+            </c:if>
         </div>
     </div>
 </footer>
@@ -261,7 +263,7 @@
                     <div class="content">
                         <div class="error"></div>
                         <div class="form loginBox">
-                            <form method="POST" action="${pageContext.servletContext.contextPath}/authorization " accept-charset="UTF-8">
+                            <form method="POST" action="${pageContext.servletContext.contextPath}/authorization?whence=jsp/MainPage.jsp&map=/mainPage" accept-charset="UTF-8">
                                 <input id="login" class="form-control" type="text" placeholder="Login" name="login" required >
                                 <input id="password" class="form-control" type="password" placeholder="Password" name="password" required>
                                 <input class="btn btn-default btn-login" type="submit" value="Login">
@@ -319,4 +321,15 @@
         );
     });
 </script>
+
+<script>
+    $(document).ready(function(){
+        if (${error}) {
+            openLoginModal();
+            alert( 'Incorrect login or password.' );
+        }
+    });
+</script>
+
+
 

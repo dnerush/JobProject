@@ -18,6 +18,7 @@ D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AboutServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\dao\impl\VacancyDAOImpl.java
 D:\JobProject\finalYearProject\src\main\java\com\work\model\Employee.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\EmployeeRegistrationServlet.java
+D:\JobProject\finalYearProject\src\main\java\com\work\servlets\AddCVServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\Addition\Parser.java
 D:\JobProject\finalYearProject\src\main\java\com\work\servlets\CompanyRegistrationServlet.java
 D:\JobProject\finalYearProject\src\main\java\com\work\service\Settings.java

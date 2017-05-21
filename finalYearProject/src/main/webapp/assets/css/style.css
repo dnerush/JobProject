@@ -373,6 +373,7 @@ input:-ms-input-placeholder {
 
 
 .home-bg{
+    padding-bottom: 60px;
     /*background: url(../images/header-bg.jpg) no-repeat center top fixed;*/
     background-color: #a76686;;
     min-height: 687px;
@@ -416,7 +417,7 @@ input:-ms-input-placeholder {
 }
 
 .mainmenu.menu-bg{ /*Панель(шапка)*/
-    background: #90526f;
+    /*    background: #90526f;*/
     color: #a76686;
 }
 
@@ -675,14 +676,110 @@ td {
     border-bottom: 2px solid #fa5c65;
     border-right: 2px solid #fa5c65;
     color:#314a5b;
-    background: #ffffff;
+    /*background: #ffffff;*/
 }
 td:first-child {
     border-left: 2px solid #fa5c65;
     border-right: 2px solid #fa5c65;
 }
 
+tr {
+    background: #ffffff;
+}
 
+tbody tr:hover {
+    background: #21d6f3; /* Цвет фона при наведении */
+    color: #fff; /* Цвет текста при наведении */
+    cursor: pointer;
+}
 
+.summary{
+    padding-top: 231px;
+}
+.summary-letter{
+    color: #333;
+    text-transform:uppercase;
+    font-size:60px;
+}
+.cv_name{
+    width: 239px;
+    height: 44px;
+}
+#cv-birthday_date_select{
+    width: 172px;
+    height: 44px;
+}
+.cv_adress{
+    width: 375px;
+    height: 44px;
+}
+label {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 
+.marg{
+    margin-top: 10px;
+}
 
+.img-thumbnail{
+    width: 238px;
+    height: 220px;
+    margin-top: 35px;
+}
+.span-center{
+    margin-left: 65px;
+}
+.contact-inf{
+    display: inline-block;
+    background-color: #fa5c65;
+    font-size: 25px;
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 0px;
+}
+.cont-size{
+    width: 213px;
+    height: 44px;
+}
+#cv-vkontakte {
+    margin: 41px 0px 41px;
+}
+#cv-facebook{
+    margin-top: 41px;
+}
+.row{
+    margin-right: -15px;
+    margin-left: -10px;
+}
+#speciality{
+    width: 555px;
+    height: 44px;
+}
+.span-required{
+    color: firebrick;
+}
+#cv-dop-mob{
+    margin-bottom: 25px;
+}
+
+.vacancyPhoto {
+    width: 300px;
+    height: 320px;
+}
+
+.area_btn {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: aqua;
+    background-image: url(/assets/images/twitter.png);
+    background-repeat: no-repeat;
+}
+.area_btn:hover{
+    background-color: aquamarine;
+}
+
+.cv {
+    margin-left: 240px; /* Отступ слева */
+}

@@ -72,7 +72,8 @@ public class FindJobServlet extends HttpServlet {
                 req.setAttribute("matches", foundVacancies);
                 req.setAttribute("isGlobal", true);
             } else { // в ином случае делаем redirect на авторизацию
-                req.getRequestDispatcher("jsp/Authorization.jsp").forward(req, resp);
+                req.setAttribute("notLog", true);
+                req.getRequestDispatcher("jsp/FindVacancy.jsp").forward(req, resp);
                 return;
             }
         }

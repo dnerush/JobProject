@@ -12,7 +12,7 @@
     <title>Authorization</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <%--<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
@@ -32,7 +32,44 @@
     <!--Theme Responsive css-->
     <link rel="stylesheet" href="assets/css/responsive.css" />
 
+    <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>--%>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
+
+    <!--For Plugins external css-->
+    <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins.css" />
+    <link rel="stylesheet" href="assets/css/opensans-web-font.css" />
+    <link rel="stylesheet" href="assets/css/montserrat-web-font.css" />
+
+    <!--For font-awesome css-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+    <!--Theme custom css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/modal_style.css">
+
+    <!--Theme Responsive css-->
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="jquery.min.js"></script>
+
+
+
+    <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+    <script src="http://bootstraptema.ru/_sf/3/394.js" type="text/javascript"></script>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -101,6 +138,7 @@
                     <br>${requestScope.get("account").getEmail()}
                     <br> Hello, dear ${requestScope.get("employee").getName()} !
                 </section>
+                <a class="area_btn" href="${pageContext.servletContext.contextPath}/addition_cv"></a>
             </div>
         </div>
     </div>

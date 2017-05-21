@@ -37,12 +37,13 @@ public class AuthorizationServlet extends HttpServlet {
         if((foundAccount = searchInAccountList(accountList, login, password)) != null) {
             HttpSession session = req.getSession();
             session.setAttribute("account_session", foundAccount);
-            resp.sendRedirect(String.format("%s%s", req.getContextPath(), "/mainPage"));
+            resp.sendRedirect(String.format("%s%s", req.getContextPath(), req.getParameter("map")));
             //req.getRequestDispatcher("jsp/MainPage.jsp").forward(req, resp);
         }
         else
         {
-            req.getRequestDispatcher("jsp/Authorization.jsp").forward(req, resp);
+            req.setAttribute("error", true);
+            req.getRequestDispatcher(req.getParameter("whence")).forward(req, resp);
         }
     }
 

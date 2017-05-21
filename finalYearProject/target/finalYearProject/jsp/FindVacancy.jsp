@@ -35,6 +35,15 @@
 
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
+    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+    <script src="http://bootstraptema.ru/_sf/3/394.js" type="text/javascript"></script>
 </head>
 
 
@@ -77,8 +86,10 @@
                 <ul class="pull-right ">
 
                     <c:if test="${account_session == null}">
-                        <li><a class="button" href="${pageContext.servletContext.contextPath}/authorization">authorization</a></li>
-                        <li><a class="button" href="${pageContext.servletContext.contextPath}/employee_registration">registration</a></li>
+                        <!--<li><a class="button" href="${pageContext.servletContext.contextPath}/authorization">authorization</a></li>-->
+                        <li><a class="button" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">authorization</a></li>
+                        <%--<li><a class="button" href="${pageContext.servletContext.contextPath}/employee_registration">registration</a></li>--%>
+                        <li><a class="button" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">registration</a></li>
                     </c:if>
 
                     <c:if test="${account_session != null}">
@@ -105,47 +116,58 @@
 
 
                 <form action="${pageContext.servletContext.contextPath}/jobs" method="POST">
-                <div class="row">
-                    <div class="col-md-12"><form>
-                        <div class="form-group">
-                            <input type="text" name="keyword" id="name" value= "${keyword}" class="form-control find-form" placeholder="Request">
-                        </div>
-                        <div class="form-group">
-                            <select name = "select" class="form-control sel-form">
-                                <option <c:if test="${isGlobal == false}"> selected </c:if> value="local" >Local</option>
-                                <option <c:if test="${isGlobal == true}"> selected </c:if>  value="global" >Global</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form></div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-12"><form>
+                            <div class="form-group">
+                                <input type="text" name="keyword" id="Keyword" value= "${keyword}" class="form-control find-form" placeholder="Request">
+                            </div>
+                            <div class="form-group">
+                                <select name = "select" class="form-control sel-form">
+                                    <option <c:if test="${isGlobal == false}"> selected </c:if> value="local" >Local</option>
+                                    <option <c:if test="${isGlobal == true}"> selected </c:if>  value="global" >Global</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form></div>
+                    </div>
                 </form>
 
                 <c:if test="${matches != null && matches.size() != 0}">
-                <table>
-                <div id="page">
-                    <div id="content">
-                        <tr>
-                            <th>Name</th>
-                            <th>
-                                <c:if test="${isGlobal == true}"> Company name </c:if>
-                                <c:if test="${isGlobal == false}"> Type </c:if>
-                            </th>
-                            <th>Description</th>
-                        </tr>
-                        <c:forEach items="${matches}" var="vacancy" varStatus="status">
-                        <tr onClick="location.href='${vacancy.getSourceLink()}'">
-                            <td>${vacancy.getName()}</td>
-                            <td>
-                                <c:if test="${isGlobal == true}"> ${vacancy.getCompanyName()} </c:if>
-                                <c:if test="${isGlobal == false}"> ${vacancy.getType()} </c:if>
-                            </td>
-                            <td>${vacancy.getDescription()}</td>
-                        </tr>
-                        </c:forEach>
-                    </div>
-                </div>
-                </table>
+                    <table>
+                        <div id="page">
+                            <div id="content">
+                                <tr>
+                                    <th>Logo</th>
+                                    <th>Name</th>
+                                    <th>
+                                        <c:if test="${isGlobal == true}"> Company name </c:if>
+                                        <c:if test="${isGlobal == false}"> Type </c:if>
+                                    </th>
+                                    <th>Description</th>
+                                </tr>
+                                <c:forEach items="${matches}" var="vacancy" varStatus="status">
+                                    <tr onClick="location.href='${vacancy.getSourceLink()}'">
+                                        <c:if test="${isGlobal == true}">
+                                            <td>
+                                                <c:if test="${vacancy.getLogoPath() != '' }">
+                                                    <img class="vacancyPhoto" src="${vacancy.getLogoPath()}">
+                                                </c:if>
+                                                <c:if test="${vacancy.getLogoPath() == '' }">
+                                                    <img class="vacancyPhoto" src="assets/images/nophoto.png">
+                                                </c:if>
+                                            </td>
+                                        </c:if>
+                                        <td>${vacancy.getName()}</td>
+                                        <td>
+                                            <c:if test="${isGlobal == true}"> ${vacancy.getCompanyName()} </c:if>
+                                            <c:if test="${isGlobal == false}"> ${vacancy.getType()} </c:if>
+                                        </td>
+                                        <td>${vacancy.getDescription()}</td>
+                                    </tr>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </table>
                     <nav aria-label="...">
                         <ul class="pager">
                             <c:if test="${isGlobal == true && matches.size() != 0}">
@@ -204,11 +226,6 @@
 </footer>
 
 
-<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-<script src="assets/js/vendor/bootstrap.min.js"></script>
-
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/main.js"></script>
 
 <script>
     //            scroll top
@@ -220,6 +237,81 @@
         );
     });
 </script>
-
 </body>
+
+<div class="modal fade login" id="loginModal">
+    <div class="modal-dialog login animated">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Login with</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="error"></div>
+                        <div class="form loginBox">
+                            <form method="POST" action="${pageContext.servletContext.contextPath}/authorization?whence=jsp/FindVacancy.jsp&map=/jobs" accept-charset="UTF-8">
+                                <input id="login" class="form-control" type="text" placeholder="Login" name="login" required >
+                                <input id="password" class="form-control" type="password" placeholder="Password" name="password" required>
+                                <input class="btn btn-default btn-login" type="submit" value="Login">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="content registerBox" style="display:none;">
+                        <div class="form">
+                            <form method="POST" action="${pageContext.servletContext.contextPath}/employee_registration" accept-charset="UTF-8">
+                                <input id="name" class="form-control" type="text" placeholder="Name" name="name">
+                                <input id="secondName" class="form-control" type="text" placeholder="Second name" name="secondName">
+                                <input id="age" class="form-control" type="text" placeholder="Age" name="age">
+                                <input id="sex" class="form-control" type="text" placeholder="Sex" name="sex">
+                                <input id="country" class="form-control" type="text" placeholder="Country" name="country">
+                                <input id="city" class="form-control" type="text" placeholder="City" name="city">
+                                <input id="phone" class="form-control" type="text" placeholder="Phone" name="phone">
+                                <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                                <input id="_login" class="form-control" type="text" placeholder="Login" name="login">
+                                <input id="password1" class="form-control" type="password" placeholder="Password" name="pass1">
+                                <input id="password2" class="form-control" type="password" placeholder="Confirm" name="pass2">
+                                <input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="forgot login-footer">
+ <span>Looking to
+ <a href="javascript: showRegisterForm();">create an account</a>
+ ?</span>
+                </div>
+                <div class="forgot register-footer" style="display:none">
+                    <span>Already have an account?</span>
+                    <a href="javascript: showLoginForm();">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </html>
+
+<script>
+    $(document).ready(function(){
+
+        if (${error}) {
+            openLoginModal();
+            alert( 'Incorrect login or password.' );
+        }
+
+    });
+</script>
+
+<script>
+    $(document).ready(function(){/*Если пользователь использует парсер - кидает на авторизацию и аллерт*/
+        if(${notLog}) {
+            openLoginModal();
+            alert( 'To use this function, you need to log in.' );
+        }
+    });
+</script>

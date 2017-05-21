@@ -2,10 +2,6 @@
     background-color: #46a6ff;
 }
 
-tbody tr:hover {
-    background: #3ea7f3; /* Цвет фона при наведении */
-    color: #fff; /* Цвет текста при наведении */
-}
 .animated {
     -webkit-animation-duration: 1s;
     -moz-animation-duration: 1s;

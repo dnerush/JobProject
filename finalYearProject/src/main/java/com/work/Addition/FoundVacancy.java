@@ -8,14 +8,35 @@ public class FoundVacancy {
     private String companyName;
     private String description;
     private String sourceLink;
+    private String logoPath;
+    private String date;
 
     public FoundVacancy() { }
 
-    public FoundVacancy(String name, String companyName, String description, String link) {
+    public FoundVacancy(String name, String companyName, String description, String link, String logoPath, String date) {
         this.name = name;
         this.companyName = companyName;
         this.description = description;
         this.sourceLink = link;
+        this.logoPath = logoPath;
+        this.date = date;
+
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLogoPath() {
+        return logoPath;
+    }
+
+    public void setLogoPath(String logoPath) {
+        this.logoPath = logoPath;
     }
 
     public String getName() {
@@ -56,8 +77,10 @@ public class FoundVacancy {
                 "name='" + name + '\'' +
                 ", companyName='" + companyName + '\'' +
                 ", description='" + description + '\'' +
-                ", link='" + sourceLink + '\'' +
-                '}';
+                ", sourceLink='" + sourceLink + '\'' +
+                ", logoPath='" + logoPath + '\'' +
+                ", date='" + date + '\'' +
+                '}' + "\n\n";
     }
 
     @Override
@@ -70,7 +93,9 @@ public class FoundVacancy {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (companyName != null ? !companyName.equals(that.companyName) : that.companyName != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        return sourceLink != null ? sourceLink.equals(that.sourceLink) : that.sourceLink == null;
+        if (sourceLink != null ? !sourceLink.equals(that.sourceLink) : that.sourceLink != null) return false;
+        if (logoPath != null ? !logoPath.equals(that.logoPath) : that.logoPath != null) return false;
+        return date != null ? date.equals(that.date) : that.date == null;
     }
 
     @Override
@@ -79,6 +104,8 @@ public class FoundVacancy {
         result = 31 * result + (companyName != null ? companyName.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (sourceLink != null ? sourceLink.hashCode() : 0);
+        result = 31 * result + (logoPath != null ? logoPath.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
     }
 }

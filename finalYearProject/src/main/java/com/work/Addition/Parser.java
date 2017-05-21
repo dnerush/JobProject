@@ -4,7 +4,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +12,6 @@ import java.util.List;
  * Created by Sky_el on 02.05.2017.
  */
 public class Parser {
-    /*public static void main(String[] args) throws IOException {
-        List<String> links = getVacancyFromWEB("manag");
-        getVacancyInformation(links);
-    }*/
 
     public List<FoundVacancy> getVacancies(String keyword, int page) throws IOException {
         List<String> links = getVacancyFromWEB(keyword, page);
@@ -42,9 +37,12 @@ public class Parser {
     private List<FoundVacancy> getVacancyInformation(List<String> links) throws IOException {
         List<FoundVacancy> foundVacancies = new ArrayList<>();
         for(String link : links) {
+            FoundVacancy foundVacancy = new FoundVacancy();
             String nameCompany = "";
             String name = "";
             String description = "";
+            String logoPath = "";
+            String date = "";
 
             Document doc = Jsoup.connect(link).get();
             Elements element = doc.getElementsByClass("card");
@@ -52,6 +50,7 @@ public class Parser {
             // get description
             for (Element e : element) {
                 Elements descript = e.getElementsByClass("overflow");
+
                 for (Element d : descript) {
                     description = d.getAllElements().text();
                 }
@@ -69,12 +68,40 @@ public class Parser {
                     name = e.getElementsByTag("h1").text();
                 }
 
+                // get logo
+                Elements logo = doc.getElementsByClass("logo-job");
+                for (Element logos : logo)
+                {
+                    Elements srcs = logos.select("[src]");
+                    for (Element src : srcs) {
+                        if (src.tagName().equals("img")) {
+                            logoPath = src.attr("abs:src");
+                        }
+                    }
+                }
+
+                // get logo
+                Elements addTop = doc.getElementsByClass("add-top");
+                for (Element logos : addTop)
+                {
+                    Elements spans = logos.getElementsByTag("span");
+                    //Elements spans = logos.select("[span]");
+                    for (Element span : spans) {
+                        Elements dates = span.getElementsByClass("text-muted");
+                        for (Element _date : dates) {
+                            date = _date.getAllElements().text();
+                        }
+                    }
+                }
             }
-            FoundVacancy foundVacancy = new FoundVacancy();
+
+
             foundVacancy.setSourceLink(link);
             foundVacancy.setName(name);
             foundVacancy.setCompanyName(nameCompany);
             foundVacancy.setDescription((description.length() > 1200 ? description.substring(0, 1200) : description) + "...");
+            foundVacancy.setLogoPath(logoPath);
+            foundVacancy.setDate(date);
             // если в списке нет такой вакансии - добавляем в список
             if(!foundVacancies.contains(foundVacancy))
                 foundVacancies.add(foundVacancy);

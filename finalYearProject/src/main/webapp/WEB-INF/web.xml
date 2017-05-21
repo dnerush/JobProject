@@ -84,6 +84,15 @@
     <url-pattern>/personal_area</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>AdditionCV</servlet-name>
+    <servlet-class>com.work.servlets.AddCVServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdditionCV</servlet-name>
+    <url-pattern>/addition_cv</url-pattern>
+  </servlet-mapping>
 </web-app>
 
 
